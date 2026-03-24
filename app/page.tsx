@@ -10,8 +10,6 @@ interface Link {
   domain: string
 }
 
-const STORAGE_KEY = 'links-last-accessed'
-
 function formatDate(iso: string) {
   const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/)
   if (!m) return iso
@@ -33,18 +31,6 @@ function formatAccessed(ts: number): string {
   return `${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${d.getFullYear()}`
 }
 
-function getAccessMap(): Record<string, number> {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')
-  } catch { return {} }
-}
-
-function recordAccess(url: string) {
-  const map = getAccessMap()
-  map[url] = Date.now()
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(map))
-}
-
 export default function Home() {
   const [links, setLinks] = useState<Link[]>([])
   const [query, setQuery] = useState('')
@@ -52,7 +38,7 @@ export default function Home() {
 
   useEffect(() => {
     fetch('/api/links').then(r => r.json()).then(setLinks)
-    setAccessed(getAccessMap())
+    fetch('/api/track').then(r => r.json()).then(setAccessed)
   }, [])
 
   const filtered = query
@@ -64,8 +50,13 @@ export default function Home() {
     : links
 
   function handleClick(url: string) {
-    recordAccess(url)
-    setAccessed(getAccessMap())
+    const ts = Date.now()
+    setAccessed(prev => ({ ...prev, [url]: ts }))
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url }),
+    })
   }
 
   return (
