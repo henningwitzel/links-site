@@ -15,10 +15,11 @@ interface Preview {
   description?: string
 }
 
-function LinkCard({ link, lastAccess, onClickLink }: {
+function LinkCard({ link, lastAccess, onClickLink, index = 0 }: {
   link: Link
   lastAccess?: number
   onClickLink: (url: string) => void
+  index?: number
 }) {
   const [preview, setPreview] = useState<Preview | null>(null)
 
@@ -36,6 +37,7 @@ function LinkCard({ link, lastAccess, onClickLink }: {
       rel="noopener noreferrer"
       onClick={() => onClickLink(link.url)}
       className="link-card"
+      style={{ '--card-index': Math.min(index, 12) } as React.CSSProperties}
     >
       {/* OG preview image */}
       {preview?.image && (
@@ -179,12 +181,27 @@ export default function Home() {
         </div>
       </header>
 
+      {/* ── Skeleton loading ── */}
+      {!loaded && (
+        <div className="skeleton-grid">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="skeleton-card">
+              <div className="skeleton-line skeleton-line-title" />
+              <div className="skeleton-line skeleton-line-notes" />
+              <div className="skeleton-line skeleton-line-notes2" />
+              <div className="skeleton-line skeleton-line-url" />
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* ── Cards ── */}
       {loaded && filtered.length > 0 && (
         <div className="card-grid">
           {filtered.map((link, i) => (
             <LinkCard
               key={i}
+              index={i}
               link={link}
               lastAccess={accessed[link.url]}
               onClickLink={handleClick}
