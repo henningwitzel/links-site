@@ -10,6 +10,81 @@ interface Link {
   domain: string
 }
 
+interface Preview {
+  image?: string
+  description?: string
+}
+
+function LinkCard({ link, lastAccess, onClickLink }: {
+  link: Link
+  lastAccess?: number
+  onClickLink: (url: string) => void
+}) {
+  const [preview, setPreview] = useState<Preview | null>(null)
+
+  useEffect(() => {
+    fetch(`/api/preview?url=${encodeURIComponent(link.url)}`)
+      .then(r => r.json())
+      .then((data: Preview) => setPreview(data))
+      .catch(() => {})
+  }, [link.url])
+
+  return (
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => onClickLink(link.url)}
+      className="link-card"
+    >
+      {/* OG preview image */}
+      {preview?.image && (
+        <div className="card-preview">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={preview.image}
+            alt=""
+            className="card-preview-img"
+            onError={e => ((e.currentTarget as HTMLImageElement).parentElement!.style.display = 'none')}
+          />
+        </div>
+      )}
+
+      {/* Top: favicon + title */}
+      <div className="card-top">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`https://www.google.com/s2/favicons?sz=32&domain=${link.domain}`}
+          width={20}
+          height={20}
+          className="card-favicon"
+          alt=""
+          onError={e => ((e.currentTarget as HTMLImageElement).style.visibility = 'hidden')}
+        />
+        <span className="card-title">{link.title}</span>
+      </div>
+
+      {/* Body: notes + url */}
+      <div className="card-body">
+        {(link.notes || preview?.description) && (
+          <p className="card-notes">{link.notes || preview?.description}</p>
+        )}
+        <span className="card-url">
+          {link.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
+        </span>
+      </div>
+
+      {/* Footer: dates */}
+      <div className="card-footer">
+        <span className="meta-date">{formatDate(link.date)}</span>
+        {lastAccess && (
+          <span className="meta-accessed">{formatAccessed(lastAccess)}</span>
+        )}
+      </div>
+    </a>
+  )
+}
+
 function formatDate(iso: string) {
   const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/)
   if (!m) return iso
@@ -107,50 +182,14 @@ export default function Home() {
       {/* ── Cards ── */}
       {loaded && filtered.length > 0 && (
         <div className="card-grid">
-          {filtered.map((link, i) => {
-            const lastAccess = accessed[link.url]
-            return (
-              <a
-                key={i}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => handleClick(link.url)}
-                className="link-card"
-                style={{ '--card-index': Math.min(i, 16) } as React.CSSProperties}
-              >
-                {/* Top: favicon + title */}
-                <div className="card-top">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`https://www.google.com/s2/favicons?sz=32&domain=${link.domain}`}
-                    width={20}
-                    height={20}
-                    className="card-favicon"
-                    alt=""
-                    onError={e => ((e.currentTarget as HTMLImageElement).style.visibility = 'hidden')}
-                  />
-                  <span className="card-title">{link.title}</span>
-                </div>
-
-                {/* Body: notes + url */}
-                <div className="card-body">
-                  {link.notes && <p className="card-notes">{link.notes}</p>}
-                  <span className="card-url">
-                    {link.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
-                  </span>
-                </div>
-
-                {/* Footer: dates */}
-                <div className="card-footer">
-                  <span className="meta-date">{formatDate(link.date)}</span>
-                  {lastAccess && (
-                    <span className="meta-accessed">{formatAccessed(lastAccess)}</span>
-                  )}
-                </div>
-              </a>
-            )
-          })}
+          {filtered.map((link, i) => (
+            <LinkCard
+              key={i}
+              link={link}
+              lastAccess={accessed[link.url]}
+              onClickLink={handleClick}
+            />
+          ))}
         </div>
       )}
 
