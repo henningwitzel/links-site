@@ -28,7 +28,7 @@ function formatAccessed(ts: number): string {
   if (days === 1) return 'yesterday'
   if (days < 7) return `${days}d ago`
   const d = new Date(ts)
-  return `${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${d.getFullYear()}`
+  return `${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}.${d.getFullYear()}`
 }
 
 export default function Home() {
@@ -60,24 +60,98 @@ export default function Home() {
   }
 
   return (
-    <main className="max-w-[820px] mx-auto px-5 sm:px-8 pb-20" style={{ background: '#0e1117', minHeight: '100vh' }}>
-      <header className="flex items-baseline justify-between gap-4 pt-8 pb-5 border-b border-white/10">
-        <h1 className="font-serif text-[1.75rem] tracking-tight" style={{ color: '#f0f0f0' }}>Links</h1>
-        <span className="text-sm" style={{ color: '#666' }}>Things worth coming back to</span>
+    <main
+      style={{
+        maxWidth: 860,
+        margin: '0 auto',
+        padding: '0 1.25rem 5rem',
+        minHeight: '100vh',
+      }}
+    >
+      {/* ── Header ── */}
+      <header
+        style={{
+          paddingTop: '2.5rem',
+          paddingBottom: '1.25rem',
+          borderBottom: '1px solid var(--border)',
+          marginBottom: 0,
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'baseline',
+            justifyContent: 'space-between',
+            gap: '1rem',
+            marginBottom: '1rem',
+          }}
+        >
+          <h1
+            className="font-serif"
+            style={{
+              fontSize: '2rem',
+              lineHeight: 1,
+              letterSpacing: '-0.01em',
+              color: 'var(--text)',
+              margin: 0,
+            }}
+          >
+            Links
+          </h1>
+          <span
+            style={{
+              fontSize: '0.8125rem',
+              color: 'var(--text-faint)',
+              flexShrink: 0,
+            }}
+          >
+            Things worth coming back to
+          </span>
+        </div>
+
+        {/* Search row */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            borderBottom: '1px solid var(--border)',
+            paddingBottom: '0.5rem',
+          }}
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            style={{ color: 'var(--text-faint)', flexShrink: 0 }}
+          >
+            <circle cx="5.5" cy="5.5" r="4" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M9 9l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search links..."
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            className="search-input"
+            autoComplete="off"
+            spellCheck={false}
+          />
+          <span
+            style={{
+              fontSize: '0.75rem',
+              color: 'var(--text-faint)',
+              flexShrink: 0,
+              fontVariantNumeric: 'tabular-nums',
+            }}
+          >
+            {filtered.length}
+          </span>
+        </div>
       </header>
 
-      <div className="flex items-center gap-3 py-3">
-        <input
-          type="text"
-          placeholder="Search…"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          className="flex-1 rounded-lg px-3.5 py-2 text-sm outline-none transition-colors"
-          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: '#f0f0f0' }}
-        />
-        <span className="text-xs shrink-0" style={{ color: '#555' }}>{filtered.length} links</span>
-      </div>
-
+      {/* ── Link list ── */}
       <div>
         {filtered.map((link, i) => {
           const lastAccess = accessed[link.url]
@@ -88,48 +162,118 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleClick(link.url)}
-              className="grid gap-x-3 items-start py-4 -mx-1 px-1 rounded-lg transition-all group"
               style={{
-                gridTemplateColumns: '72px 22px 1fr 14px',
-                borderBottom: '1px solid rgba(255,255,255,0.06)',
+                display: 'grid',
+                gridTemplateColumns: '68px 20px 1fr',
+                gap: '0 0.75rem',
+                alignItems: 'start',
+                padding: '0.875rem 0.5rem',
+                margin: '0 -0.5rem',
+                borderBottom: '1px solid var(--border)',
+                textDecoration: 'none',
+                borderRadius: 4,
+                transition: 'background 0.1s ease',
               }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.03)')}
+              onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg-hover)')}
               onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
-              <div className="pt-0.5">
-                <span className="text-xs tabular-nums leading-5 block" style={{ color: '#555' }}>
+              {/* Date + last accessed */}
+              <div style={{ paddingTop: 2 }}>
+                <span
+                  style={{
+                    display: 'block',
+                    fontSize: '0.6875rem',
+                    lineHeight: '1.4',
+                    color: 'var(--text-faint)',
+                    fontVariantNumeric: 'tabular-nums',
+                    letterSpacing: '0.01em',
+                  }}
+                >
                   {formatDate(link.date)}
                 </span>
                 {lastAccess && (
-                  <span className="text-[10px] tabular-nums leading-4 block mt-0.5" style={{ color: '#6366f1' }}>
+                  <span
+                    style={{
+                      display: 'block',
+                      fontSize: '0.625rem',
+                      lineHeight: '1.4',
+                      marginTop: 2,
+                      color: 'var(--indigo)',
+                      fontVariantNumeric: 'tabular-nums',
+                    }}
+                  >
                     {formatAccessed(lastAccess)}
                   </span>
                 )}
               </div>
+
+              {/* Favicon */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`https://www.google.com/s2/favicons?sz=32&domain=${link.domain}`}
-                width={18}
-                height={18}
-                className="rounded-sm mt-0.5"
+                width={16}
+                height={16}
+                style={{ borderRadius: 3, marginTop: 3, display: 'block' }}
                 alt=""
-                onError={e => (e.currentTarget.style.display = 'none')}
+                onError={e => (e.currentTarget.style.visibility = 'hidden')}
               />
-              <div className="min-w-0">
-                <p className="text-sm font-medium truncate mb-0.5 leading-5" style={{ color: '#e8e8e8' }}>{link.title}</p>
+
+              {/* Content */}
+              <div style={{ minWidth: 0 }}>
+                <p
+                  style={{
+                    margin: '0 0 0.2rem',
+                    fontSize: '0.9375rem',
+                    fontWeight: 500,
+                    lineHeight: '1.35',
+                    color: 'var(--text)',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {link.title}
+                </p>
                 {link.notes && (
-                  <p className="text-xs leading-relaxed mb-1" style={{ color: '#666' }}>{link.notes}</p>
+                  <p
+                    style={{
+                      margin: '0 0 0.2rem',
+                      fontSize: '0.8125rem',
+                      lineHeight: '1.5',
+                      color: 'var(--text-muted)',
+                    }}
+                  >
+                    {link.notes}
+                  </p>
                 )}
-                <span className="text-[11px] truncate block" style={{ color: '#444' }}>
+                <span
+                  style={{
+                    display: 'block',
+                    fontSize: '0.6875rem',
+                    color: 'var(--text-url)',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
                   {link.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
                 </span>
               </div>
-              <span className="text-sm pt-0.5 transition-colors" style={{ color: '#444' }}>↗</span>
             </a>
           )
         })}
+
         {filtered.length === 0 && (
-          <p className="text-sm text-zinc-600 text-center py-16">No links found</p>
+          <p
+            style={{
+              textAlign: 'center',
+              padding: '4rem 0',
+              fontSize: '0.875rem',
+              color: 'var(--text-faint)',
+            }}
+          >
+            No links found
+          </p>
         )}
       </div>
     </main>
