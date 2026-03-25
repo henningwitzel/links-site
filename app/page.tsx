@@ -24,11 +24,15 @@ function LinkCard({ link, lastAccess, onClickLink, index = 0 }: {
   const [preview, setPreview] = useState<Preview | null>(null)
 
   useEffect(() => {
-    fetch(`/api/preview?url=${encodeURIComponent(link.url)}`)
-      .then(r => r.json())
-      .then((data: Preview) => setPreview(data))
-      .catch(() => {})
-  }, [link.url])
+    const delay = index * 150
+    const timer = setTimeout(() => {
+      fetch(`/api/preview?url=${encodeURIComponent(link.url)}`)
+        .then(r => r.json())
+        .then((data: Preview) => setPreview(data))
+        .catch(() => {})
+    }, delay)
+    return () => clearTimeout(timer)
+  }, [link.url, index])
 
   return (
     <a
@@ -45,7 +49,7 @@ function LinkCard({ link, lastAccess, onClickLink, index = 0 }: {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={preview.image}
-            alt=""
+            alt={link.title}
             className="card-preview-img"
             onError={e => ((e.currentTarget as HTMLImageElement).parentElement!.style.display = 'none')}
           />
@@ -173,6 +177,7 @@ export default function Home() {
             placeholder="Search links..."
             value={query}
             onChange={e => setQuery(e.target.value)}
+            aria-label="Search links"
             className="search-input"
             autoComplete="off"
             spellCheck={false}
