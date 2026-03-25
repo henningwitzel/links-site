@@ -60,21 +60,22 @@ export default function Home() {
   }
 
   return (
-    <main className="max-w-[820px] mx-auto px-6 sm:px-8 pb-20">
-      <header className="flex items-baseline justify-between gap-4 py-10 border-b border-white/10">
-        <h1 className="font-serif text-[1.75rem] tracking-tight">Links</h1>
-        <span className="text-sm text-zinc-500">Things worth coming back to</span>
+    <main className="max-w-[820px] mx-auto px-5 sm:px-8 pb-20" style={{ background: '#0e1117', minHeight: '100vh' }}>
+      <header className="flex items-baseline justify-between gap-4 pt-8 pb-5 border-b border-white/10">
+        <h1 className="font-serif text-[1.75rem] tracking-tight" style={{ color: '#f0f0f0' }}>Links</h1>
+        <span className="text-sm" style={{ color: '#666' }}>Things worth coming back to</span>
       </header>
 
-      <div className="flex items-center gap-3 py-4">
+      <div className="flex items-center gap-3 py-3">
         <input
           type="text"
           placeholder="Search…"
           value={query}
           onChange={e => setQuery(e.target.value)}
-          className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3.5 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none focus:border-indigo-500 transition-colors"
+          className="flex-1 rounded-lg px-3.5 py-2 text-sm outline-none transition-colors"
+          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: '#f0f0f0' }}
         />
-        <span className="text-xs text-zinc-600 shrink-0">{filtered.length} links</span>
+        <span className="text-xs shrink-0" style={{ color: '#555' }}>{filtered.length} links</span>
       </div>
 
       <div>
@@ -87,15 +88,20 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleClick(link.url)}
-              className="grid gap-x-3 items-start py-4 border-b border-white/[0.07] hover:bg-white/[0.03] -mx-2 px-2 rounded-lg transition-colors group"
-              style={{ gridTemplateColumns: '72px 24px 1fr 16px' }}
+              className="grid gap-x-3 items-start py-4 -mx-1 px-1 rounded-lg transition-all group"
+              style={{
+                gridTemplateColumns: '72px 22px 1fr 14px',
+                borderBottom: '1px solid rgba(255,255,255,0.06)',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.03)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
               <div className="pt-0.5">
-                <span className="text-xs text-zinc-600 tabular-nums leading-5 block">
+                <span className="text-xs tabular-nums leading-5 block" style={{ color: '#555' }}>
                   {formatDate(link.date)}
                 </span>
                 {lastAccess && (
-                  <span className="text-[10px] text-indigo-500/70 tabular-nums leading-4 block mt-0.5">
+                  <span className="text-[10px] tabular-nums leading-4 block mt-0.5" style={{ color: '#6366f1' }}>
                     {formatAccessed(lastAccess)}
                   </span>
                 )}
@@ -110,15 +116,15 @@ export default function Home() {
                 onError={e => (e.currentTarget.style.display = 'none')}
               />
               <div className="min-w-0">
-                <p className="text-sm font-medium text-zinc-100 truncate mb-0.5 leading-5">{link.title}</p>
+                <p className="text-sm font-medium truncate mb-0.5 leading-5" style={{ color: '#e8e8e8' }}>{link.title}</p>
                 {link.notes && (
-                  <p className="text-xs text-zinc-500 leading-relaxed mb-1">{link.notes}</p>
+                  <p className="text-xs leading-relaxed mb-1" style={{ color: '#666' }}>{link.notes}</p>
                 )}
-                <span className="text-[11px] text-zinc-700 truncate block">
+                <span className="text-[11px] truncate block" style={{ color: '#444' }}>
                   {link.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
                 </span>
               </div>
-              <span className="text-zinc-700 group-hover:text-zinc-400 text-sm pt-0.5 transition-colors">↗</span>
+              <span className="text-sm pt-0.5 transition-colors" style={{ color: '#444' }}>↗</span>
             </a>
           )
         })}
