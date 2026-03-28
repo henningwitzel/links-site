@@ -306,6 +306,14 @@ body {
   overflow: hidden;
 }
 
+.card-relevance {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--accent);
+  margin: 0.5rem 0 0 0;
+  font-style: italic;
+}
+
 .card-url {
   font-size: 0.6875rem;
   color: var(--text-url);

@@ -7,6 +7,7 @@ interface Link {
   title: string
   url: string
   notes: string
+  relevance?: string
   domain: string
 }
 
@@ -70,10 +71,13 @@ function LinkCard({ link, lastAccess, onClickLink, index = 0 }: {
         <span className="card-title">{link.title}</span>
       </div>
 
-      {/* Body: notes + url */}
+      {/* Body: notes + relevance + url */}
       <div className="card-body">
         {(link.notes || preview?.description) && (
           <p className="card-notes">{link.notes || preview?.description}</p>
+        )}
+        {link.relevance && (
+          <p className="card-relevance">💡 {link.relevance}</p>
         )}
         <span className="card-url">
           {link.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
@@ -132,6 +136,7 @@ export default function Home() {
     ? links.filter(l =>
         l.title.toLowerCase().includes(query.toLowerCase()) ||
         l.notes.toLowerCase().includes(query.toLowerCase()) ||
+        (l.relevance && l.relevance.toLowerCase().includes(query.toLowerCase())) ||
         l.domain.toLowerCase().includes(query.toLowerCase())
       )
     : links
