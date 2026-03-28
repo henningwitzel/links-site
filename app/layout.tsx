@@ -15,7 +15,7 @@ const sans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Links',
+  title: "Henning's Link Collection",
   description: 'Things worth coming back to',
 }
 

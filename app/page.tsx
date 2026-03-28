@@ -173,7 +173,7 @@ export default function Home() {
       {/* ── Header ── */}
       <header className="page-header">
         <div className="header-row">
-          <h1 className="page-title font-serif">Links</h1>
+          <h1 className="page-title font-serif">Henning&apos;s Link Collection</h1>
           <p className="header-sub">Things worth coming back to</p>
         </div>
 
