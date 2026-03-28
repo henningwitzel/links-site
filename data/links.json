@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-03-28",
+    "title": "Repomix — Pack your codebase into AI-friendly formats",
+    "url": "https://repomix.com/",
+    "notes": "Packs entire codebases into AI-friendly formats for feeding to LLMs. Nominated for JSNation Open Source Awards 2025 (Powered by AI category).",
+    "relevance": "Useful for feeding Intura's codebase to Claude for reviews, refactoring, or onboarding new contributors. Also handy for your OpenClaw coding workflows.",
+    "domain": "repomix.com"
+  },
+  {
+    "date": "2026-03-28",
     "title": "Thesys — The Generative UI Company",
     "url": "https://www.thesys.dev/",
     "notes": "C1 by Thesys is an API middleware that augments LLMs to respond with interactive UI in realtime instead of text. Generative UI layer on top of LLMs.",
