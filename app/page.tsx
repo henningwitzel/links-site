@@ -8,6 +8,7 @@ interface Link {
   url: string
   notes: string
   relevance?: string
+  tags?: string[]
   domain: string
 }
 
@@ -84,6 +85,15 @@ function LinkCard({ link, lastAccess, onClickLink, index = 0 }: {
         </span>
       </div>
 
+      {/* Tags */}
+      {link.tags && link.tags.length > 0 && (
+        <div className="card-tags">
+          {link.tags.map((tag) => (
+            <span key={tag} className="card-tag">{tag}</span>
+          ))}
+        </div>
+      )}
+
       {/* Footer: dates */}
       <div className="card-footer">
         <span className="meta-date">{formatDate(link.date)}</span>
@@ -119,6 +129,7 @@ function formatAccessed(ts: number): string {
 export default function Home() {
   const [links, setLinks] = useState<Link[]>([])
   const [query, setQuery] = useState('')
+  const [activeTag, setActiveTag] = useState<string | null>(null)
   const [accessed, setAccessed] = useState<Record<string, number>>({})
   const [loaded, setLoaded] = useState(false)
 
@@ -132,14 +143,20 @@ export default function Home() {
     fetch('/api/track').then(r => r.json()).then(setAccessed)
   }, [])
 
-  const filtered = query
-    ? links.filter(l =>
-        l.title.toLowerCase().includes(query.toLowerCase()) ||
-        l.notes.toLowerCase().includes(query.toLowerCase()) ||
-        (l.relevance && l.relevance.toLowerCase().includes(query.toLowerCase())) ||
-        l.domain.toLowerCase().includes(query.toLowerCase())
-      )
-    : links
+  // Collect all unique tags
+  const allTags = Array.from(new Set(links.flatMap(l => l.tags || []))).sort()
+
+  const filtered = links.filter(l => {
+    const matchesTag = !activeTag || (l.tags && l.tags.includes(activeTag))
+    const matchesQuery = !query || (
+      l.title.toLowerCase().includes(query.toLowerCase()) ||
+      l.notes.toLowerCase().includes(query.toLowerCase()) ||
+      (l.relevance && l.relevance.toLowerCase().includes(query.toLowerCase())) ||
+      (l.tags && l.tags.some(t => t.toLowerCase().includes(query.toLowerCase()))) ||
+      l.domain.toLowerCase().includes(query.toLowerCase())
+    )
+    return matchesTag && matchesQuery
+  })
 
   function handleClick(url: string) {
     const ts = Date.now()
@@ -189,6 +206,26 @@ export default function Home() {
           />
           <span className="search-count">{loaded ? filtered.length : ''}</span>
         </div>
+        {/* Tag filter */}
+        {loaded && allTags.length > 0 && (
+          <div className="tag-filter">
+            <button
+              className={`tag-btn ${activeTag === null ? 'tag-btn-active' : ''}`}
+              onClick={() => setActiveTag(null)}
+            >
+              All
+            </button>
+            {allTags.map(tag => (
+              <button
+                key={tag}
+                className={`tag-btn ${activeTag === tag ? 'tag-btn-active' : ''}`}
+                onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        )}
       </header>
 
       {/* ── Skeleton loading ── */}

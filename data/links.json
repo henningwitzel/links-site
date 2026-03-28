@@ -5,6 +5,7 @@
     "url": "https://repomix.com/",
     "notes": "Packs entire codebases into AI-friendly formats for feeding to LLMs. Nominated for JSNation Open Source Awards 2025 (Powered by AI category).",
     "relevance": "Useful for feeding Intura's codebase to Claude for reviews, refactoring, or onboarding new contributors. Also handy for your OpenClaw coding workflows.",
+    "tags": ["dev-tools", "ai"],
     "domain": "repomix.com"
   },
   {
@@ -13,6 +14,7 @@
     "url": "https://www.thesys.dev/",
     "notes": "C1 by Thesys is an API middleware that augments LLMs to respond with interactive UI in realtime instead of text. Generative UI layer on top of LLMs.",
     "relevance": "Could transform Intura's AI coaching from text responses to interactive UI. Also relevant to UKAL and how NewStore thinks about AI-driven interfaces.",
+    "tags": ["ai", "design", "product"],
     "domain": "thesys.dev"
   },
   {
@@ -21,6 +23,7 @@
     "url": "https://x.com/paulsolt/status/2037591726227902555",
     "notes": "Paul Solt on why 70% of screenshot effectiveness comes from text overlay, not UI. One app saw 80% conversion lift just from rewriting copy. Includes before/after rewrites and a 5-screenshot sequence that converts.",
     "relevance": "Directly actionable for Intura's App Store listing. Rewrite screenshot headlines from feature descriptions to outcome-driven copy this week.",
+    "tags": ["intura", "growth", "aso"],
     "domain": "x.com"
   },
   {
@@ -29,6 +32,7 @@
     "url": "https://super-easy-apps.kit.com/screenshots",
     "notes": "100 best practices for App Store screenshots from @Designerants, the ASO expert behind 1,000+ optimized screenshots. Covers copywriting, sequencing, visual design, and A/B testing.",
     "relevance": "Feed this PDF to Claude and rewrite Intura's App Store listing. No code changes needed, just better words.",
+    "tags": ["intura", "growth", "aso"],
     "domain": "super-easy-apps.kit.com"
   },
   {
@@ -37,6 +41,7 @@
     "url": "https://simplex.chat/",
     "notes": "End-to-end encrypted messaging with no user IDs, fully decentralized architecture.",
     "relevance": "Study for Intura's privacy model. Their no-user-ID approach could inform how you handle journal data privacy.",
+    "tags": ["privacy", "product"],
     "domain": "simplex.chat"
   },
   {
@@ -45,6 +50,7 @@
     "url": "https://x.com/cesaralvarezll/status/2036873854455255505",
     "notes": "Onboarding flow: demo video, personalization, animations, mid-flow review prompt, personalized plan. Soft paywall: annual with 75% discount as \"free trial\", monthly as fallback.",
     "relevance": "Blueprint for Intura's onboarding redesign. The soft paywall approach (annual as \"free trial\") could boost Pro conversion.",
+    "tags": ["intura", "growth", "design"],
     "domain": "x.com"
   },
   {
@@ -53,6 +59,7 @@
     "url": "https://vm.tiktok.com/ZGdu4hovf/",
     "notes": "Marketing inspiration for Claude/AI skills.",
     "relevance": "Content marketing ideas for positioning Intura's AI coaching as a differentiator.",
+    "tags": ["marketing", "ai"],
     "domain": "vm.tiktok.com"
   },
   {
@@ -61,6 +68,7 @@
     "url": "https://github.com/hesamsheikh/awesome-openclaw-usecases",
     "notes": "Community collection of real OpenClaw use cases and workflows.",
     "relevance": "Reference for expanding your own OpenClaw setup with proven patterns from other users.",
+    "tags": ["ai", "openclaw"],
     "domain": "github.com"
   },
   {
@@ -69,6 +77,7 @@
     "url": "https://www.vibiz.ai",
     "notes": "Found via IG ad. AI business tool.",
     "relevance": "Competitive research. Check how they position AI coaching vs. Intura's approach.",
+    "tags": ["intura", "product"],
     "domain": "vibiz.ai"
   },
   {
@@ -77,6 +86,7 @@
     "url": "https://www.intura.app",
     "notes": "Your own Intura landing page.",
     "relevance": "Benchmark your own positioning and messaging against the links you're collecting here.",
+    "tags": ["intura"],
     "domain": "intura.app"
   },
   {
@@ -85,6 +95,7 @@
     "url": "https://www.instagram.com/reel/DVYyt0IjI-C/",
     "notes": "Use \"tune\" format instead of JSON to save tokens in LLM prompts.",
     "relevance": "Could reduce API costs for Intura's Claude coaching engine by optimizing prompt format.",
+    "tags": ["ai", "dev-tools"],
     "domain": "instagram.com"
   },
   {
@@ -93,6 +104,7 @@
     "url": "https://x.com/neethanwu/status/2034786360356204934?s=46",
     "notes": "Engineer built a 3-layer design harness: Skills (Impeccable, Emil Kowalski), Agent Canvas (Paper, Pencil), and Inspiration (Variant, Mobbin, Cosmos). Went from zero design ability to shipping weekly in 3 months. 5.6k bookmarks, 666k impressions.",
     "relevance": "As Design Director, this maps how non-designers use AI to ship design. The tools mentioned (Impeccable, Paper, Pencil) could change how your team thinks about AI-assisted design workflows.",
+    "tags": ["design", "ai"],
     "domain": "x.com"
   }
 ]
