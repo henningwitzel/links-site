@@ -132,6 +132,22 @@ export default function Home() {
   const [activeTag, setActiveTag] = useState<string | null>(null)
   const [accessed, setAccessed] = useState<Record<string, number>>({})
   const [loaded, setLoaded] = useState(false)
+  const [dark, setDark] = useState(false)
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme')
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setDark(true)
+      document.documentElement.setAttribute('data-theme', 'dark')
+    }
+  }, [])
+
+  function toggleTheme() {
+    const next = !dark
+    setDark(next)
+    document.documentElement.setAttribute('data-theme', next ? 'dark' : 'light')
+    localStorage.setItem('theme', next ? 'dark' : 'light')
+  }
 
   useEffect(() => {
     fetch('/api/links')
@@ -173,8 +189,17 @@ export default function Home() {
       {/* ── Header ── */}
       <header className="page-header">
         <div className="header-row">
-          <h1 className="page-title font-serif">Henning&apos;s Link Collection</h1>
-          <p className="header-sub">Things worth coming back to</p>
+          <div>
+            <h1 className="page-title font-serif">Henning&apos;s Link Collection</h1>
+            <p className="header-sub">Things worth coming back to</p>
+          </div>
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+          >
+            {dark ? '☀️' : '🌙'}
+          </button>
         </div>
 
         <div className="search-wrap">

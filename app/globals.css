@@ -37,8 +37,7 @@
   --card-radius:   12px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+[data-theme="dark"] {
     /* Surfaces */
     --bg:          oklch(14% 0.008 250);      /* deep blue-tinted dark */
     --card-bg:     oklch(17.5% 0.010 250);    /* slightly lighter card */
@@ -64,7 +63,6 @@
     --header-border: oklch(22% 0.010 250);
     --bg-subtle:     oklch(22% 0.010 250);
     --card-radius:   12px;
-  }
 }
 
 /* ── Base ── */
@@ -110,7 +108,7 @@ body {
 
 .header-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
@@ -334,6 +332,24 @@ body {
   background: var(--bg-subtle);
   color: var(--text-muted);
   border: 1px solid var(--card-border);
+}
+
+/* ── Theme toggle ── */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 0.375rem 0.5rem;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--search-border-focus);
+  background: var(--bg-subtle);
 }
 
 /* ── Tag filter bar ── */
