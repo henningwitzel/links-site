@@ -3,56 +3,56 @@
     "date": "2026-03-28",
     "title": "The Screenshot Mistake That's Costing You Downloads Every Day",
     "url": "https://x.com/paulsolt/status/2037591726227902555",
-    "notes": "Paul Solt on the most common app store screenshot mistake. Links to his full playbook on super-easy-apps. 145 likes, 27k impressions. Directly relevant to Intura onboarding and conversion optimization.",
-    "relevance": "Critical for Intura's app store presence and user acquisition strategy.",
+    "notes": "Paul Solt on why 70% of screenshot effectiveness comes from text overlay, not UI. One app saw 80% conversion lift just from rewriting copy. Includes before/after rewrites and a 5-screenshot sequence that converts.",
+    "relevance": "Directly actionable for Intura's App Store listing. Rewrite screenshot headlines from feature descriptions to outcome-driven copy this week.",
     "domain": "x.com"
   },
   {
     "date": "2026-03-28",
     "title": "How to Double Your App Downloads Without Changing a Single Line of Code",
     "url": "https://super-easy-apps.kit.com/screenshots",
-    "notes": "App Store screenshot playbook: copywriting, sequencing, visual design, A/B testing. By Paul Solt.",
-    "relevance": "Actionable playbook for improving Intura's app store conversion without changing the product.",
+    "notes": "100 best practices for App Store screenshots from @Designerants, the ASO expert behind 1,000+ optimized screenshots. Covers copywriting, sequencing, visual design, and A/B testing.",
+    "relevance": "Feed this PDF to Claude and rewrite Intura's App Store listing. No code changes needed, just better words.",
     "domain": "super-easy-apps.kit.com"
   },
   {
     "date": "2026-03-27",
     "title": "SimpleX Chat",
     "url": "https://simplex.chat/",
-    "notes": "End-to-end encrypted messaging, no user IDs, decentralized. Study for Intura's privacy model + decentralized architecture.",
-    "relevance": "Research for Intura's privacy-first design and decentralized approach to user data.",
+    "notes": "End-to-end encrypted messaging with no user IDs, fully decentralized architecture.",
+    "relevance": "Study for Intura's privacy model. Their no-user-ID approach could inform how you handle journal data privacy.",
     "domain": "simplex.chat"
   },
   {
     "date": "2026-03-26",
     "title": "Cal AI onboarding breakdown",
     "url": "https://x.com/cesaralvarezll/status/2036873854455255505",
-    "notes": "Onboarding flow: demo video, personalization, animations, mid-flow review prompt, personalized plan. Soft paywall: annual with 75% discount as \"free trial\", monthly as fallback. Relevant for Intura onboarding.",
-    "relevance": "Blueprint for Intura's soft paywall strategy and onboarding sequence design.",
+    "notes": "Onboarding flow: demo video, personalization, animations, mid-flow review prompt, personalized plan. Soft paywall: annual with 75% discount as \"free trial\", monthly as fallback.",
+    "relevance": "Blueprint for Intura's onboarding redesign. The soft paywall approach (annual as \"free trial\") could boost Pro conversion.",
     "domain": "x.com"
   },
   {
     "date": "2026-03-24",
     "title": "TikTok — Marketing Claude skills",
     "url": "https://vm.tiktok.com/ZGdu4hovf/",
-    "notes": "Marketing inspiration for Claude/AI skills",
-    "relevance": "Marketing and positioning insights for OpenClaw and Claude-based AI assistant products.",
+    "notes": "Marketing inspiration for Claude/AI skills.",
+    "relevance": "Content marketing ideas for positioning Intura's AI coaching as a differentiator.",
     "domain": "vm.tiktok.com"
   },
   {
     "date": "2026-03-23",
     "title": "awesome-openclaw-usecases",
     "url": "https://github.com/hesamsheikh/awesome-openclaw-usecases",
-    "notes": "Community collection of real OpenClaw use cases",
-    "relevance": "Real-world OpenClaw implementations and use cases to understand the ecosystem.",
+    "notes": "Community collection of real OpenClaw use cases and workflows.",
+    "relevance": "Reference for expanding your own OpenClaw setup with proven patterns from other users.",
     "domain": "github.com"
   },
   {
     "date": "2026-03-22",
     "title": "vibiz.ai",
     "url": "https://www.vibiz.ai",
-    "notes": "Via IG ad — check out",
-    "relevance": "Potential competitor or alternative approach in the AI business/coaching space.",
+    "notes": "Found via IG ad. AI business tool.",
+    "relevance": "Competitive research. Check how they position AI coaching vs. Intura's approach.",
     "domain": "vibiz.ai"
   },
   {
@@ -60,23 +60,23 @@
     "title": "www.intura.app",
     "url": "https://www.intura.app",
     "notes": "Your own Intura landing page.",
-    "relevance": "Your own product—reference for positioning and messaging.",
+    "relevance": "Benchmark your own positioning and messaging against the links you're collecting here.",
     "domain": "intura.app"
   },
   {
     "date": "2026-03-22",
-    "title": "Instagram Reel",
+    "title": "Instagram Reel — Tune format for LLM prompts",
     "url": "https://www.instagram.com/reel/DVYyt0IjI-C/",
-    "notes": "Use \"tune\" format instead of JSON to save tokens in LLM prompts",
-    "relevance": "Optimization technique for AI prompts—applicable to Intura's coaching engine.",
+    "notes": "Use \"tune\" format instead of JSON to save tokens in LLM prompts.",
+    "relevance": "Could reduce API costs for Intura's Claude coaching engine by optimizing prompt format.",
     "domain": "instagram.com"
   },
   {
     "date": "2025-07-15",
-    "title": "x.com/neethanwu",
+    "title": "Design Without Designing — Neethan Wu",
     "url": "https://x.com/neethanwu/status/2034786360356204934?s=46",
-    "notes": "Good design skills",
-    "relevance": "Designer to follow for product and UX thinking—relevant to your design leadership role.",
+    "notes": "Engineer built a 3-layer design harness: Skills (Impeccable, Emil Kowalski), Agent Canvas (Paper, Pencil), and Inspiration (Variant, Mobbin, Cosmos). Went from zero design ability to shipping weekly in 3 months. 5.6k bookmarks, 666k impressions.",
+    "relevance": "As Design Director, this maps how non-designers use AI to ship design. The tools mentioned (Impeccable, Paper, Pencil) could change how your team thinks about AI-assisted design workflows.",
     "domain": "x.com"
   }
 ]
