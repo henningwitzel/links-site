@@ -4,6 +4,7 @@
     "title": "The Screenshot Mistake That's Costing You Downloads Every Day",
     "url": "https://x.com/paulsolt/status/2037591726227902555",
     "notes": "Paul Solt on the most common app store screenshot mistake. Links to his full playbook on super-easy-apps. 145 likes, 27k impressions. Directly relevant to Intura onboarding and conversion optimization.",
+    "relevance": "Critical for Intura's app store presence and user acquisition strategy.",
     "domain": "x.com"
   },
   {
@@ -11,6 +12,7 @@
     "title": "How to Double Your App Downloads Without Changing a Single Line of Code",
     "url": "https://super-easy-apps.kit.com/screenshots",
     "notes": "App Store screenshot playbook: copywriting, sequencing, visual design, A/B testing. By Paul Solt.",
+    "relevance": "Actionable playbook for improving Intura's app store conversion without changing the product.",
     "domain": "super-easy-apps.kit.com"
   },
   {
@@ -18,6 +20,7 @@
     "title": "SimpleX Chat",
     "url": "https://simplex.chat/",
     "notes": "End-to-end encrypted messaging, no user IDs, decentralized. Study for Intura's privacy model + decentralized architecture.",
+    "relevance": "Research for Intura's privacy-first design and decentralized approach to user data.",
     "domain": "simplex.chat"
   },
   {
@@ -25,6 +28,7 @@
     "title": "Cal AI onboarding breakdown",
     "url": "https://x.com/cesaralvarezll/status/2036873854455255505",
     "notes": "Onboarding flow: demo video, personalization, animations, mid-flow review prompt, personalized plan. Soft paywall: annual with 75% discount as \"free trial\", monthly as fallback. Relevant for Intura onboarding.",
+    "relevance": "Blueprint for Intura's soft paywall strategy and onboarding sequence design.",
     "domain": "x.com"
   },
   {
@@ -32,6 +36,7 @@
     "title": "TikTok — Marketing Claude skills",
     "url": "https://vm.tiktok.com/ZGdu4hovf/",
     "notes": "Marketing inspiration for Claude/AI skills",
+    "relevance": "Marketing and positioning insights for OpenClaw and Claude-based AI assistant products.",
     "domain": "vm.tiktok.com"
   },
   {
@@ -39,6 +44,7 @@
     "title": "awesome-openclaw-usecases",
     "url": "https://github.com/hesamsheikh/awesome-openclaw-usecases",
     "notes": "Community collection of real OpenClaw use cases",
+    "relevance": "Real-world OpenClaw implementations and use cases to understand the ecosystem.",
     "domain": "github.com"
   },
   {
@@ -46,13 +52,15 @@
     "title": "vibiz.ai",
     "url": "https://www.vibiz.ai",
     "notes": "Via IG ad — check out",
+    "relevance": "Potential competitor or alternative approach in the AI business/coaching space.",
     "domain": "vibiz.ai"
   },
   {
     "date": "2026-03-22",
     "title": "www.intura.app",
     "url": "https://www.intura.app",
-    "notes": "",
+    "notes": "Your own Intura landing page.",
+    "relevance": "Your own product—reference for positioning and messaging.",
     "domain": "intura.app"
   },
   {
@@ -60,6 +68,7 @@
     "title": "Instagram Reel",
     "url": "https://www.instagram.com/reel/DVYyt0IjI-C/",
     "notes": "Use \"tune\" format instead of JSON to save tokens in LLM prompts",
+    "relevance": "Optimization technique for AI prompts—applicable to Intura's coaching engine.",
     "domain": "instagram.com"
   },
   {
@@ -67,6 +76,7 @@
     "title": "x.com/neethanwu",
     "url": "https://x.com/neethanwu/status/2034786360356204934?s=46",
     "notes": "Good design skills",
+    "relevance": "Designer to follow for product and UX thinking—relevant to your design leadership role.",
     "domain": "x.com"
   }
 ]
