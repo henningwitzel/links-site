@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-03-28",
+    "title": "Thesys — The Generative UI Company",
+    "url": "https://www.thesys.dev/",
+    "notes": "C1 by Thesys is an API middleware that augments LLMs to respond with interactive UI in realtime instead of text. Generative UI layer on top of LLMs.",
+    "relevance": "Could transform Intura's AI coaching from text responses to interactive UI. Also relevant to UKAL and how NewStore thinks about AI-driven interfaces.",
+    "domain": "thesys.dev"
+  },
+  {
+    "date": "2026-03-28",
     "title": "The Screenshot Mistake That's Costing You Downloads Every Day",
     "url": "https://x.com/paulsolt/status/2037591726227902555",
     "notes": "Paul Solt on why 70% of screenshot effectiveness comes from text overlay, not UI. One app saw 80% conversion lift just from rewriting copy. Includes before/after rewrites and a 5-screenshot sequence that converts.",
