@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-03-28",
+    "title": "Building Your AI Second Brain: A Practical Guide",
+    "url": "https://www.ronforbes.com/blog/building-your-ai-second-brain",
+    "notes": "Ron Forbes on building an AI-powered second brain. 15-minute brain dump, AI handles organizing and distilling, 2,000+ notes synthesized into daily briefs. Includes 30-minute quickstart guide.",
+    "relevance": "You're already building this with Obsidian + OpenClaw. Compare his approach to yours and steal what works, especially the daily brief and cross-project insight surfacing.",
+    "tags": ["ai", "productivity", "openclaw"],
+    "domain": "ronforbes.com"
+  },
+  {
+    "date": "2026-03-28",
     "title": "Repomix — Pack your codebase into AI-friendly formats",
     "url": "https://repomix.com/",
     "notes": "Packs entire codebases into AI-friendly formats for feeding to LLMs. Nominated for JSNation Open Source Awards 2025 (Powered by AI category).",
