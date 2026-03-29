@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-03-29",
+    "title": "Marketing Skills by Corey Haines",
+    "url": "https://github.com/coreyhaines31/marketingskills?tab=readme-ov-file",
+    "notes": "Marketing fundamentals for indie builders and founders. Relevant for Intura positioning and HWA Design growth.",
+    "tags": ["marketing", "indie", "intura"],
+    "domain": "github.com"
+  },
+  {
+    "date": "2026-03-29",
     "title": "21 INSANE Use Cases for OpenClaw - Matthew Berman",
     "url": "https://youtu.be/8kNv3rjQaVA",
     "notes": "Comprehensive walkthrough: local SQLite CRM with vector embeddings, knowledge base RAG, nightly business/security advisory councils, meeting action item pipelines (Fathom), automated database backups, self-improving prompts, food journal, social media tracking. All running locally on a MacBook.",
