@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import YouTubeCard from './YouTubeCard'
 
 interface Link {
   date: string
@@ -270,15 +271,27 @@ export default function Home() {
       {/* ── Cards ── */}
       {loaded && filtered.length > 0 && (
         <div className="card-grid">
-          {filtered.map((link, i) => (
-            <LinkCard
-              key={i}
-              index={i}
-              link={link}
-              lastAccess={accessed[link.url]}
-              onClickLink={handleClick}
-            />
-          ))}
+          {filtered.map((link, i) => {
+            const isYouTube = /(?:youtube\.com|youtu\.be)/.test(link.url)
+            
+            return isYouTube ? (
+              <YouTubeCard
+                key={i}
+                index={i}
+                link={link}
+                lastAccess={accessed[link.url]}
+                onClickLink={handleClick}
+              />
+            ) : (
+              <LinkCard
+                key={i}
+                index={i}
+                link={link}
+                lastAccess={accessed[link.url]}
+                onClickLink={handleClick}
+              />
+            )
+          })}
         </div>
       )}
 
