@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-03-30",
+    "title": "OpenClaw Mission Control Dashboard \u2014 Alex Finn",
+    "url": "https://youtu.be/RhLpV6QDBFE",
+    "notes": "How to build a custom Next.js Mission Control for OpenClaw. Key tools: Kanban task board with live activity feed (heartbeat checks for new tasks), Calendar view of all cron jobs, Daily Memory Tracker, custom tools on demand. Zero code needed.",
+    "relevance": "The Task Board and Calendar are exactly what we're missing. Visibility into what OpenClaw is doing and confirming cron jobs actually run. Natural next step after the Memory Dashboard we built yesterday.",
+    "tags": [
+      "ai",
+      "openclaw",
+      "automation",
+      "dashboard"
+    ],
+    "domain": "youtube.com"
+  },
+  {
     "date": "2026-03-29",
     "title": "5 OpenClaw Use Cases That Will Actually Improve Your Life \u2014 Alex Finn",
     "url": "https://youtu.be/qRA0MyPlEPE",
