@@ -1,6 +1,20 @@
 [
   {
     "date": "2026-03-30",
+    "title": "UI/UX Pro Max \u2014 Design Intelligence Skill for Claude Code",
+    "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "notes": "Claude Code skill with AI-powered design system generator. Input project type \u2192 get complete design system: pattern, colors, typography, effects, anti-patterns. 67 UI styles, 161 palettes, 57 font pairings, 15 stacks incl. SwiftUI + React Native. Install: uipro init --ai claude",
+    "relevance": "Design system generator could speed up UI decisions at NewStore and for Intura. SwiftUI + React Native stacks directly applicable. Could give Claude Code consistent design context.",
+    "tags": [
+      "design",
+      "ai",
+      "claude-code",
+      "tools"
+    ],
+    "domain": "github.com"
+  },
+  {
+    "date": "2026-03-30",
     "title": "OpenClaw Mission Control Dashboard \u2014 Alex Finn",
     "url": "https://youtu.be/RhLpV6QDBFE",
     "notes": "How to build a custom Next.js Mission Control for OpenClaw. Key tools: Kanban task board with live activity feed (heartbeat checks for new tasks), Calendar view of all cron jobs, Daily Memory Tracker, custom tools on demand. Zero code needed.",
