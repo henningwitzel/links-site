@@ -4,15 +4,18 @@
     "title": "OpenClaw Free Forever with Local LLM AI Model Setup",
     "type": "youtube",
     "author": "EnhanceUI",
-    "summary": "How to set up local LLM models with OpenClaw using Ollama, and use MCP to reduce costs on large context queries. Covers Qwen 3.5 and other models.",
-    "relevance": "Directly relevant to OpenClaw + Ollama local embeddings plan for the knowledge base.",
+    "summary": "Full walkthrough for running OpenClaw at zero API cost using Ollama and open-source LLMs. Covers installing Ollama, choosing a model (Qwen 3.5 recommended), connecting it to OpenClaw during setup or switching an existing install, understanding model sizes vs. available RAM, and connecting external apps via Zapier MCP. Sponsored by Zapier.",
+    "relevance": "Core reference for the Ollama local model setup planned for the knowledge base vector embeddings. Also shows exactly how to switch OpenClaw from cloud to local models — directly applicable when setting up the Mac Mini.",
     "tags": [
       "openclaw",
       "ollama",
       "local-models",
       "mcp",
+      "zapier",
+      "qwen",
       "ai",
-      "setup"
+      "setup",
+      "free"
     ],
     "date_added": "2026-04-01"
   },
