@@ -1,11 +1,27 @@
 [
   {
+    "url": "https://youtu.be/CYBZmwOmsk8",
+    "title": "How I Run 8 AI Employees 24/7 with OpenClaw - Multi-Agent Setup for Beginners",
+    "type": "youtube",
+    "author": "Sonny Sangha",
+    "summary": "Full walkthrough of building a multi-agent AI team with OpenClaw. Shows how to run multiple specialized agents on one server, each with their own memory, personality, skills, and model \u2014 orchestrated by one main agent.",
+    "relevance": "Relevant to OpenClaw architecture and potential future multi-agent setup. Shows how to split tasks across specialized agents.",
+    "tags": [
+      "openclaw",
+      "multi-agent",
+      "ai",
+      "setup",
+      "automation"
+    ],
+    "date_added": "2026-04-01"
+  },
+  {
     "url": "https://youtu.be/Pl0s83kpIT0",
     "title": "OpenClaw Free Forever with Local LLM AI Model Setup",
     "type": "youtube",
     "author": "EnhanceUI",
     "summary": "Full walkthrough for running OpenClaw at zero API cost using Ollama and open-source LLMs. Covers installing Ollama, choosing a model (Qwen 3.5 recommended), connecting it to OpenClaw during setup or switching an existing install, understanding model sizes vs. available RAM, and connecting external apps via Zapier MCP. Sponsored by Zapier.",
-    "relevance": "Core reference for the Ollama local model setup planned for the knowledge base vector embeddings. Also shows exactly how to switch OpenClaw from cloud to local models — directly applicable when setting up the Mac Mini.",
+    "relevance": "Core reference for the Ollama local model setup planned for the knowledge base vector embeddings. Also shows exactly how to switch OpenClaw from cloud to local models \u2014 directly applicable when setting up the Mac Mini.",
     "tags": [
       "openclaw",
       "ollama",
