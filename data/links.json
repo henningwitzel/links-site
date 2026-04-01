@@ -1,5 +1,22 @@
 [
   {
+    "url": "https://youtu.be/Pl0s83kpIT0",
+    "title": "OpenClaw Free Forever with Local LLM AI Model Setup",
+    "type": "youtube",
+    "author": "EnhanceUI",
+    "summary": "How to set up local LLM models with OpenClaw using Ollama, and use MCP to reduce costs on large context queries. Covers Qwen 3.5 and other models.",
+    "relevance": "Directly relevant to OpenClaw + Ollama local embeddings plan for the knowledge base.",
+    "tags": [
+      "openclaw",
+      "ollama",
+      "local-models",
+      "mcp",
+      "ai",
+      "setup"
+    ],
+    "date_added": "2026-04-01"
+  },
+  {
     "date": "2026-03-30",
     "title": "UI/UX Pro Max \u2014 Design Intelligence Skill for Claude Code",
     "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
