@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Redis from 'ioredis'
 
-const redis = new Redis(process.env.REDIS_URL!)
+const redis = process.env.REDIS_URL ? new Redis(process.env.REDIS_URL) : null
 const CACHE_PREFIX = 'og-preview:'
 const CACHE_TTL = 60 * 60 * 24 * 7 // 7 days
 
@@ -42,7 +42,7 @@ export async function GET(req: NextRequest) {
 
   // Check cache
   const cacheKey = CACHE_PREFIX + url
-  const cached = await redis.get(cacheKey)
+  const cached = redis ? await redis.get(cacheKey) : null
   if (cached) {
     return NextResponse.json(JSON.parse(cached), {
       headers: { 'Cache-Control': 'public, max-age=3600' }
@@ -62,7 +62,9 @@ export async function GET(req: NextRequest) {
     const html = await res.text()
     const preview = extractMeta(html)
 
-    await redis.setex(cacheKey, CACHE_TTL, JSON.stringify(preview))
+    if (redis) {
+      await redis.setex(cacheKey, CACHE_TTL, JSON.stringify(preview))
+    }
 
     return NextResponse.json(preview, {
       headers: { 'Cache-Control': 'public, max-age=3600' }
