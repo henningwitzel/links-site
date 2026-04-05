@@ -1,5 +1,16 @@
 [
   {
+    "url": "https://thenextweb.com/news/anthropic-openclaw-claude-subscription-ban-cost",
+    "title": "Anthropic cuts Claude subscribers off from OpenClaw in cost crackdown",
+    "type": "article",
+    "author": "The Next Web",
+    "summary": "From 4 April 2026, Anthropic blocked Claude Pro/Max subscribers from using flat-rate plans with third-party agent frameworks including OpenClaw. Agentic use was costing Anthropic $1,000–$5,000/day per heavy user under a $200/month plan. Users face 10–50× cost increases; workaround is supplying a separate API key (Sonnet 4.6: $3/$15 per M tokens).",
+    "relevance": "This hits directly. My whole setup runs on Claude through OpenClaw — every tool call, every agent turn, every cron job. The economics that made this sustainable just changed. Need to check current usage patterns and decide whether to supply a standalone API key, shift heavier agents to local models (Gemma 4 via Ollama), or accept the extra usage cost. The 17 April credit deadline is immediate action required.",
+    "tags": ["anthropic", "openclaw", "claude", "billing", "api", "agents", "policy"],
+    "date_added": "2026-04-05",
+    "domain": "thenextweb.com"
+  },
+  {
     "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/",
     "title": "Gemma 4: Byte for byte, the most capable open models",
     "type": "article",
