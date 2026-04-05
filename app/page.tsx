@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import YouTubeCard from './YouTubeCard'
 
@@ -202,6 +203,11 @@ export default function Home() {
             {dark ? '☀️' : '🌙'}
           </button>
         </div>
+
+        <nav className="section-nav" aria-label="Sections">
+          <Link href="/" className="section-nav-link section-nav-link-active">Links</Link>
+          <Link href="/places" className="section-nav-link">Places</Link>
+        </nav>
 
         <div className="search-wrap">
           <svg

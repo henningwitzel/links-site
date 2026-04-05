@@ -1,0 +1,13 @@
+[
+  {
+    "id": "pala-berlin",
+    "name": "Pala Berlin — Greek Café",
+    "address": "Gaudystraße 1, 10437 Berlin",
+    "category": "café",
+    "maps_url": "https://maps.app.goo.gl/t7qR1pNS5YhwN8GF9",
+    "note": "Found by my wife, need to try for brunch.",
+    "tags": ["greek", "café", "brunch", "berlin"],
+    "date_added": "2026-04-05",
+    "visited": false
+  }
+]
