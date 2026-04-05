@@ -27,8 +27,9 @@
   --accent:      oklch(60% 0.12 55);
 
   /* Relevance callout */
-  --relevance-bg:     oklch(95% 0.025 70);
-  --relevance-border: oklch(72% 0.12 65);
+  --relevance-bg:     oklch(96.5% 0.018 65);
+  --relevance-border: oklch(68% 0.14 60);
+  --relevance-text:   oklch(38% 0.06 55);
 
   /* Search */
   --search-bg:   oklch(100% 0.002 60);
@@ -59,8 +60,9 @@
     --accent:      oklch(72% 0.10 55);
 
     /* Relevance callout */
-    --relevance-bg:     oklch(22% 0.018 55);
-    --relevance-border: oklch(50% 0.10 55);
+    --relevance-bg:     oklch(20% 0.022 50);
+    --relevance-border: oklch(52% 0.12 50);
+    --relevance-text:   oklch(78% 0.08 55);
 
     /* Search */
     --search-bg:   oklch(20% 0.010 250);
@@ -317,14 +319,15 @@ body {
 
 .card-relevance {
   font-size: 0.75rem;
-  line-height: 1.5;
-  color: var(--accent);
+  line-height: 1.55;
+  color: var(--relevance-text);
   margin: 0.5rem 0 0 0;
+  font-family: var(--font-serif);
   font-style: italic;
   background: var(--relevance-bg);
   border-left: 3px solid var(--relevance-border);
-  border-radius: 6px;
-  padding: 0.4rem 0.625rem;
+  border-radius: 4px 6px 6px 4px;
+  padding: 0.5rem 0.75rem;
 }
 
 /* ── Tags ── */
