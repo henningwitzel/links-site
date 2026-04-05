@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Redis from 'ioredis'
 
-const redis = process.env.REDIS_URL ? new Redis(process.env.REDIS_URL) : null
 const CACHE_PREFIX = 'og-preview:'
 const CACHE_TTL = 60 * 60 * 24 * 7 // 7 days
+
+let redis: import('ioredis').default | null = null
+
+async function getRedis() {
+  if (redis) return redis
+  if (!process.env.REDIS_URL) return null
+  const { default: Redis } = await import('ioredis')
+  redis = new Redis(process.env.REDIS_URL)
+  return redis
+}
 
 interface Preview {
   title?: string
@@ -41,8 +49,9 @@ export async function GET(req: NextRequest) {
   if (!url) return NextResponse.json({ error: 'Missing url' }, { status: 400 })
 
   // Check cache
+  const client = await getRedis()
   const cacheKey = CACHE_PREFIX + url
-  const cached = redis ? await redis.get(cacheKey) : null
+  const cached = client ? await client.get(cacheKey) : null
   if (cached) {
     return NextResponse.json(JSON.parse(cached), {
       headers: { 'Cache-Control': 'public, max-age=3600' }
@@ -62,8 +71,8 @@ export async function GET(req: NextRequest) {
     const html = await res.text()
     const preview = extractMeta(html)
 
-    if (redis) {
-      await redis.setex(cacheKey, CACHE_TTL, JSON.stringify(preview))
+    if (client) {
+      await client.setex(cacheKey, CACHE_TTL, JSON.stringify(preview))
     }
 
     return NextResponse.json(preview, {
