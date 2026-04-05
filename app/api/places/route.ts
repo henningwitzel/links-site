@@ -12,6 +12,8 @@ interface Place {
   tags: string[]
   date_added: string
   visited: boolean
+  photo_url: string | null
+  google_place_id?: string | null
 }
 
 const placesPath = path.join(process.cwd(), 'data', 'places.json')
@@ -43,6 +45,8 @@ export async function POST(req: NextRequest) {
     tags: Array.isArray(body.tags) ? body.tags.map((tag: unknown) => String(tag)) : [],
     date_added: String(body.date_added ?? new Date().toISOString().slice(0, 10)),
     visited: Boolean(body.visited),
+    photo_url: body.photo_url == null ? null : String(body.photo_url),
+    google_place_id: body.google_place_id == null ? null : String(body.google_place_id),
   }
 
   if (!place.name || !place.address || !place.maps_url) {

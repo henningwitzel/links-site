@@ -14,6 +14,8 @@ interface Place {
   tags: string[]
   date_added: string
   visited: boolean
+  photo_url: string | null
+  google_place_id?: string | null
 }
 
 function formatDate(iso: string) {
@@ -51,6 +53,23 @@ export default function PlacesPage() {
       })
       .catch(() => setLoaded(true))
   }, [])
+
+  useEffect(() => {
+    const pending = places.filter((place) => !place.photo_url && place.google_place_id)
+    if (pending.length === 0) return
+
+    pending.forEach((place) => {
+      fetch(`/api/places/photo?place_id=${encodeURIComponent(place.google_place_id!)}`)
+        .then((r) => r.json())
+        .then((data: { photo_url?: string | null }) => {
+          if (!data.photo_url) return
+          setPlaces((prev) => prev.map((item) => (
+            item.id === place.id ? { ...item, photo_url: data.photo_url ?? null } : item
+          )))
+        })
+        .catch(() => {})
+    })
+  }, [places])
 
   async function removePlace(id: string) {
     const res = await fetch(`/api/places/${encodeURIComponent(id)}`, { method: 'DELETE' })
@@ -125,6 +144,26 @@ export default function PlacesPage() {
               >
                 ✕
               </button>
+
+              <div className="card-preview place-preview">
+                {place.photo_url ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={place.photo_url}
+                    alt={place.name}
+                    className="card-preview-img"
+                    onError={() => {
+                      setPlaces((prev) => prev.map((item) => (
+                        item.id === place.id ? { ...item, photo_url: null } : item
+                      )))
+                    }}
+                  />
+                ) : (
+                  <div className="place-preview-placeholder" aria-hidden="true">
+                    <span className="place-preview-emoji">🗺️</span>
+                  </div>
+                )}
+              </div>
 
               <div className="card-top place-card-top">
                 <div className="place-card-heading">

@@ -12,6 +12,8 @@ interface Place {
   tags: string[]
   date_added: string
   visited: boolean
+  photo_url: string | null
+  google_place_id?: string | null
 }
 
 const placesPath = path.join(process.cwd(), 'data', 'places.json')
