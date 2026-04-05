@@ -6,7 +6,9 @@
     "category": "café",
     "maps_url": "https://maps.app.goo.gl/t7qR1pNS5YhwN8GF9",
     "note": "Found by my wife, need to try for brunch.",
-    "tags": ["greek", "café", "brunch", "berlin"],
+    "description": "Greek family café from Rhodes, now in Prenzlauer Berg. Ingredients imported directly from Greece — feta, olive oil, honey, yoghurt. Known for bougatsa (custard pastry), Greek orange cake, and iced coffees from Blaue Bohne roastery. Leafy hidden gem with indoor and outdoor seating. No laptops allowed. Weekends get busy — go early.",
+    "what_to_order": "Bougatsa or Melitzana, Greek orange cake + iced coffee",
+    "tags": ["greek", "café", "brunch", "berlin", "prenzlauer-berg"],
     "date_added": "2026-04-05",
     "visited": false,
     "photo_url": null

@@ -11,6 +11,8 @@ interface Place {
   category: string
   maps_url: string
   note: string
+  description?: string
+  what_to_order?: string
   tags: string[]
   date_added: string
   visited: boolean
@@ -184,6 +186,10 @@ export default function PlacesPage() {
               <div className="card-body">
                 <p className="card-notes">{place.address}</p>
                 {place.note && <p className="card-notes">{place.note}</p>}
+                {place.description && <p className="place-description">{place.description}</p>}
+                {place.what_to_order && (
+                  <p className="place-order-callout">🍽️ What to order: {place.what_to_order}</p>
+                )}
               </div>
 
               {place.tags.length > 0 && (

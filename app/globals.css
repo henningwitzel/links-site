@@ -777,3 +777,23 @@ body {
   opacity: 0.72;
   filter: saturate(0.9);
 }
+
+.place-description {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0.125rem 0 0;
+}
+
+.place-order-callout {
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--relevance-text);
+  margin: 0.5rem 0 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  background: var(--relevance-bg);
+  border-left: 3px solid var(--relevance-border);
+  border-radius: 4px 6px 6px 4px;
+  padding: 0.5rem 0.75rem;
+}
