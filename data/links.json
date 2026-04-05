@@ -1,5 +1,16 @@
 [
   {
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/",
+    "title": "Gemma 4: Byte for byte, the most capable open models",
+    "type": "article",
+    "author": "Clement Farabet & Olivier Lacombe, Google DeepMind",
+    "summary": "Google releases Gemma 4 in four sizes (E2B, E4B, 26B MoE, 31B Dense) under Apache 2.0. Built from the same research as Gemini 3, with native agentic support (function-calling, JSON output), 128K–256K context, multimodal input, and day-one Ollama support. The 31B model ranks #3 open model on Arena AI leaderboard.",
+    "relevance": "Directly relevant to the Ollama setup — Gemma 4 is available via `ollama pull gemma4` today. The 26B MoE is fast and efficient enough to run locally on the Mac Mini without hammering RAM; the 31B Dense is the quality pick for coding and reasoning tasks. Apache 2.0 means no usage restrictions for Intura or any other project. The native agentic features (function-calling, JSON output, system instructions) make it a serious candidate for powering OpenClaw agents without hitting cloud APIs.",
+    "tags": ["ai", "open-models", "local-models", "ollama", "gemma", "google", "agentic", "llm"],
+    "date_added": "2026-04-05",
+    "domain": "blog.google"
+  },
+  {
     "url": "https://youtu.be/CYBZmwOmsk8",
     "title": "How I Run 8 AI Employees 24/7 with OpenClaw - Multi-Agent Setup for Beginners",
     "type": "youtube",
