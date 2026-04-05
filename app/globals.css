@@ -26,6 +26,10 @@
   /* Accent (warm amber for last-accessed) */
   --accent:      oklch(60% 0.12 55);
 
+  /* Relevance callout */
+  --relevance-bg:     oklch(95% 0.025 70);
+  --relevance-border: oklch(72% 0.12 65);
+
   /* Search */
   --search-bg:   oklch(100% 0.002 60);
   --search-border: oklch(85% 0.012 60);
@@ -53,6 +57,10 @@
 
     /* Accent */
     --accent:      oklch(72% 0.10 55);
+
+    /* Relevance callout */
+    --relevance-bg:     oklch(22% 0.018 55);
+    --relevance-border: oklch(50% 0.10 55);
 
     /* Search */
     --search-bg:   oklch(20% 0.010 250);
@@ -313,6 +321,10 @@ body {
   color: var(--accent);
   margin: 0.5rem 0 0 0;
   font-style: italic;
+  background: var(--relevance-bg);
+  border-left: 3px solid var(--relevance-border);
+  border-radius: 6px;
+  padding: 0.4rem 0.625rem;
 }
 
 /* ── Tags ── */
