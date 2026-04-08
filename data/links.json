@@ -1,11 +1,27 @@
 [
   {
+    "url": "https://intura.app/blog/update-for-everyone",
+    "title": "No longer just for managers",
+    "type": "article",
+    "author": "Henning Witzel-Acikgöz",
+    "summary": "Intura expands from a manager-only app into a career and leadership companion for everyone. The update adds role-based onboarding, tailored prompts for managers and non-managers, and coaching frameworks that fit each working style while preserving the same privacy model.",
+    "relevance": "Henning's own Intura blog post announcing a key product positioning change. Important for documenting the app's evolution and for sharing in link collections tied to Intura, product, and AI-assisted personal development.",
+    "tags": [
+      "intura",
+      "product-update",
+      "career-development",
+      "personal-productivity"
+    ],
+    "date_added": "2026-04-08",
+    "domain": "intura.app"
+  },
+  {
     "url": "https://x.com/wasimships/status/2040753893131391349",
-    "title": "7 Onboarding Mistakes That Kill 90% of iOS Retention \u2014 @WasimShips",
+    "title": "7 Onboarding Mistakes That Kill 90% of iOS Retention — @WasimShips",
     "type": "article",
     "author": "@WasimShips",
     "summary": "7 onboarding mistakes: 1) asking for permissions on launch, 2) mandatory sign-up before showing value, 3) tutorial slides with no interaction, 4) too many choices on home screen, 5) no empty state design, 6) ignoring iPhone SE viewport, 7) no win in first session. Retention is an onboarding problem 80% of the time.",
-    "relevance": "Directly applicable to Intura onboarding design. Points 1, 2, 5, and 7 especially relevant \u2014 show value before asking for account, handle empty states, give users a win in first session.",
+    "relevance": "Directly applicable to Intura onboarding design. Points 1, 2, 5, and 7 especially relevant — show value before asking for account, handle empty states, give users a win in first session.",
     "tags": [
       "onboarding",
       "ios",
@@ -22,8 +38,8 @@
     "title": "Anthropic cuts Claude subscribers off from OpenClaw in cost crackdown",
     "type": "article",
     "author": "The Next Web",
-    "summary": "From 4 April 2026, Anthropic blocked Claude Pro/Max subscribers from using flat-rate plans with third-party agent frameworks including OpenClaw. Agentic use was costing Anthropic $1,000\u2013$5,000/day per heavy user under a $200/month plan. Users face 10\u201350\u00d7 cost increases; workaround is supplying a separate API key (Sonnet 4.6: $3/$15 per M tokens).",
-    "relevance": "This hits directly. My whole setup runs on Claude through OpenClaw \u2014 every tool call, every agent turn, every cron job. The economics that made this sustainable just changed. Need to check current usage patterns and decide whether to supply a standalone API key, shift heavier agents to local models (Gemma 4 via Ollama), or accept the extra usage cost. The 17 April credit deadline is immediate action required.",
+    "summary": "From 4 April 2026, Anthropic blocked Claude Pro/Max subscribers from using flat-rate plans with third-party agent frameworks including OpenClaw. Agentic use was costing Anthropic $1,000–$5,000/day per heavy user under a $200/month plan. Users face 10–50× cost increases; workaround is supplying a separate API key (Sonnet 4.6: $3/$15 per M tokens).",
+    "relevance": "This hits directly. My whole setup runs on Claude through OpenClaw — every tool call, every agent turn, every cron job. The economics that made this sustainable just changed. Need to check current usage patterns and decide whether to supply a standalone API key, shift heavier agents to local models (Gemma 4 via Ollama), or accept the extra usage cost. The 17 April credit deadline is immediate action required.",
     "tags": [
       "anthropic",
       "openclaw",
@@ -41,8 +57,8 @@
     "title": "Gemma 4: Byte for byte, the most capable open models",
     "type": "article",
     "author": "Clement Farabet & Olivier Lacombe, Google DeepMind",
-    "summary": "Google releases Gemma 4 in four sizes (E2B, E4B, 26B MoE, 31B Dense) under Apache 2.0. Built from the same research as Gemini 3, with native agentic support (function-calling, JSON output), 128K\u2013256K context, multimodal input, and day-one Ollama support. The 31B model ranks #3 open model on Arena AI leaderboard.",
-    "relevance": "Directly relevant to the Ollama setup \u2014 Gemma 4 is available via `ollama pull gemma4` today. The 26B MoE is fast and efficient enough to run locally on the Mac Mini without hammering RAM; the 31B Dense is the quality pick for coding and reasoning tasks. Apache 2.0 means no usage restrictions for Intura or any other project. The native agentic features (function-calling, JSON output, system instructions) make it a serious candidate for powering OpenClaw agents without hitting cloud APIs.",
+    "summary": "Google releases Gemma 4 in four sizes (E2B, E4B, 26B MoE, 31B Dense) under Apache 2.0. Built from the same research as Gemini 3, with native agentic support (function-calling, JSON output), 128K–256K context, multimodal input, and day-one Ollama support. The 31B model ranks #3 open model on Arena AI leaderboard.",
+    "relevance": "Directly relevant to the Ollama setup — Gemma 4 is available via `ollama pull gemma4` today. The 26B MoE is fast and efficient enough to run locally on the Mac Mini without hammering RAM; the 31B Dense is the quality pick for coding and reasoning tasks. Apache 2.0 means no usage restrictions for Intura or any other project. The native agentic features (function-calling, JSON output, system instructions) make it a serious candidate for powering OpenClaw agents without hitting cloud APIs.",
     "tags": [
       "ai",
       "open-models",
@@ -62,7 +78,7 @@
     "title": "How I Run 8 AI Employees 24/7 with OpenClaw - Multi-Agent Setup for Beginners",
     "type": "youtube",
     "author": "Sonny Sangha",
-    "summary": "Full walkthrough of building a multi-agent AI team with OpenClaw. Shows how to run multiple specialized agents on one server, each with their own memory, personality, skills, and model \u2014 orchestrated by one main agent.",
+    "summary": "Full walkthrough of building a multi-agent AI team with OpenClaw. Shows how to run multiple specialized agents on one server, each with their own memory, personality, skills, and model — orchestrated by one main agent.",
     "relevance": "Relevant to OpenClaw architecture and potential future multi-agent setup. Shows how to split tasks across specialized agents.",
     "tags": [
       "openclaw",
@@ -80,7 +96,7 @@
     "type": "youtube",
     "author": "EnhanceUI",
     "summary": "Full walkthrough for running OpenClaw at zero API cost using Ollama and open-source LLMs. Covers installing Ollama, choosing a model (Qwen 3.5 recommended), connecting it to OpenClaw during setup or switching an existing install, understanding model sizes vs. available RAM, and connecting external apps via Zapier MCP. Sponsored by Zapier.",
-    "relevance": "Core reference for the Ollama local model setup planned for the knowledge base vector embeddings. Also shows exactly how to switch OpenClaw from cloud to local models \u2014 directly applicable when setting up the Mac Mini.",
+    "relevance": "Core reference for the Ollama local model setup planned for the knowledge base vector embeddings. Also shows exactly how to switch OpenClaw from cloud to local models — directly applicable when setting up the Mac Mini.",
     "tags": [
       "openclaw",
       "ollama",
@@ -97,9 +113,9 @@
   },
   {
     "date": "2026-03-30",
-    "title": "UI/UX Pro Max \u2014 Design Intelligence Skill for Claude Code",
+    "title": "UI/UX Pro Max — Design Intelligence Skill for Claude Code",
     "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-    "notes": "Claude Code skill with AI-powered design system generator. Input project type \u2192 get complete design system: pattern, colors, typography, effects, anti-patterns. 67 UI styles, 161 palettes, 57 font pairings, 15 stacks incl. SwiftUI + React Native. Install: uipro init --ai claude",
+    "notes": "Claude Code skill with AI-powered design system generator. Input project type → get complete design system: pattern, colors, typography, effects, anti-patterns. 67 UI styles, 161 palettes, 57 font pairings, 15 stacks incl. SwiftUI + React Native. Install: uipro init --ai claude",
     "relevance": "Design system generator could speed up UI decisions at NewStore and for Intura. SwiftUI + React Native stacks directly applicable. Could give Claude Code consistent design context.",
     "tags": [
       "design",
@@ -111,7 +127,7 @@
   },
   {
     "date": "2026-03-30",
-    "title": "OpenClaw Mission Control Dashboard \u2014 Alex Finn",
+    "title": "OpenClaw Mission Control Dashboard — Alex Finn",
     "url": "https://youtu.be/RhLpV6QDBFE",
     "notes": "How to build a custom Next.js Mission Control for OpenClaw. Key tools: Kanban task board with live activity feed (heartbeat checks for new tasks), Calendar view of all cron jobs, Daily Memory Tracker, custom tools on demand. Zero code needed.",
     "relevance": "The Task Board and Calendar are exactly what we're missing. Visibility into what OpenClaw is doing and confirming cron jobs actually run. Natural next step after the Memory Dashboard we built yesterday.",
@@ -125,7 +141,7 @@
   },
   {
     "date": "2026-03-29",
-    "title": "5 OpenClaw Use Cases That Will Actually Improve Your Life \u2014 Alex Finn",
+    "title": "5 OpenClaw Use Cases That Will Actually Improve Your Life — Alex Finn",
     "url": "https://youtu.be/qRA0MyPlEPE",
     "notes": "Daily memory tracker, trending content alerts (X/Reddit/YouTube APIs via Discord), vibe coding micro-apps in Telegram, overnight autonomous R&D team (5 AI models debating), SaaS creator dashboard with autonomous improvement loop.",
     "relevance": "Complements Matthew Berman's video. Memory tracker validates our daily memory system. Trending alerts idea could extend the daily news cron. Overnight R&D team concept maps to Intura advisory council idea.",
@@ -182,7 +198,7 @@
   },
   {
     "date": "2026-03-28",
-    "title": "Repomix \u2014 Pack your codebase into AI-friendly formats",
+    "title": "Repomix — Pack your codebase into AI-friendly formats",
     "url": "https://repomix.com/",
     "notes": "Packs entire codebases into AI-friendly formats for feeding to LLMs. Nominated for JSNation Open Source Awards 2025 (Powered by AI category).",
     "relevance": "Useful for feeding Intura's codebase to Claude for reviews, refactoring, or onboarding new contributors. Also handy for your OpenClaw coding workflows.",
@@ -194,7 +210,7 @@
   },
   {
     "date": "2026-03-28",
-    "title": "Thesys \u2014 The Generative UI Company",
+    "title": "Thesys — The Generative UI Company",
     "url": "https://www.thesys.dev/",
     "notes": "C1 by Thesys is an API middleware that augments LLMs to respond with interactive UI in realtime instead of text. Generative UI layer on top of LLMs.",
     "relevance": "Could transform Intura's AI coaching from text responses to interactive UI. Also relevant to UKAL and how NewStore thinks about AI-driven interfaces.",
@@ -258,7 +274,7 @@
   },
   {
     "date": "2026-03-24",
-    "title": "TikTok \u2014 Marketing Claude skills",
+    "title": "TikTok — Marketing Claude skills",
     "url": "https://vm.tiktok.com/ZGdu4hovf/",
     "notes": "Marketing inspiration for Claude/AI skills.",
     "relevance": "Content marketing ideas for positioning Intura's AI coaching as a differentiator.",
@@ -305,7 +321,7 @@
   },
   {
     "date": "2026-03-22",
-    "title": "Instagram Reel \u2014 Tune format for LLM prompts",
+    "title": "Instagram Reel — Tune format for LLM prompts",
     "url": "https://www.instagram.com/reel/DVYyt0IjI-C/",
     "notes": "Use \"tune\" format instead of JSON to save tokens in LLM prompts.",
     "relevance": "Could reduce API costs for Intura's Claude coaching engine by optimizing prompt format.",
@@ -317,7 +333,7 @@
   },
   {
     "date": "2025-07-15",
-    "title": "Design Without Designing \u2014 Neethan Wu",
+    "title": "Design Without Designing — Neethan Wu",
     "url": "https://x.com/neethanwu/status/2034786360356204934?s=46",
     "notes": "Engineer built a 3-layer design harness: Skills (Impeccable, Emil Kowalski), Agent Canvas (Paper, Pencil), and Inspiration (Variant, Mobbin, Cosmos). Went from zero design ability to shipping weekly in 3 months. 5.6k bookmarks, 666k impressions.",
     "relevance": "As Design Director, this maps how non-designers use AI to ship design. The tools mentioned (Impeccable, Paper, Pencil) could change how your team thinks about AI-assisted design workflows.",
