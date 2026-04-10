@@ -1,5 +1,19 @@
 [
   {
+    "url": "https://example.com/test-link-intake-2",
+    "title": "Test Link Intake 2",
+    "type": "article",
+    "author": "",
+    "summary": "Second test summary for verifying the full link intake pipeline.",
+    "relevance": "Pipeline verification only.",
+    "tags": [
+      "test",
+      "pipeline"
+    ],
+    "date_added": "2026-04-10",
+    "domain": "example.com"
+  },
+  {
     "url": "https://www.youtube.com/watch?v=6V-b073qhPA&is=LWngmcCT2ntxUM5E",
     "title": "Personal memory system for agents",
     "type": "youtube",
