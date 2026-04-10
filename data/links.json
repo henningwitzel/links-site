@@ -1,5 +1,21 @@
 [
   {
+    "url": "https://www.youtube.com/watch?v=6V-b073qhPA&is=LWngmcCT2ntxUM5E",
+    "title": "Personal memory system for agents",
+    "type": "youtube",
+    "author": "",
+    "summary": "A video about building a personal memory system for agents, including transcript-first workflows, visual memory exploration, and using memory as a reusable agent rule system.",
+    "relevance": "Useful for building agent workflows and memory systems.",
+    "tags": [
+      "youtube",
+      "agents",
+      "memory",
+      "workflow"
+    ],
+    "date_added": "2026-04-10",
+    "domain": "youtube.com"
+  },
+  {
     "url": "https://intura.app/blog/update-for-everyone",
     "title": "No longer just for managers",
     "type": "article",
