@@ -4,8 +4,8 @@
     "title": "Test Link Intake 2",
     "type": "article",
     "author": "",
-    "summary": "Second test summary for verifying the full link intake pipeline.",
-    "relevance": "Pipeline verification only.",
+    "summary": "Second test summary for verifying the full link intake pipeline. This entry exists only to confirm the add, sync, commit, and push flow works end to end.",
+    "relevance": "Pipeline verification only. Used to validate the full link intake flow and GitHub push.",
     "tags": [
       "test",
       "pipeline"
