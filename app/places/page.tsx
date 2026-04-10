@@ -3,21 +3,14 @@
 import type { CSSProperties } from 'react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import type { Place } from '@/lib/types'
 
-interface Place {
-  id: string
-  name: string
-  address: string
-  category: string
-  maps_url: string
-  note: string
-  description?: string
-  what_to_order?: string
-  tags: string[]
-  date_added: string
-  visited: boolean
-  photo_url: string | null
-  google_place_id?: string | null
+function placePhotoSrc(place: Place): string | null {
+  if (place.photo_url) return place.photo_url
+  if (place.google_place_id) {
+    return `/api/places/photo?place_id=${encodeURIComponent(place.google_place_id)}`
+  }
+  return null
 }
 
 function formatDate(iso: string) {
@@ -55,23 +48,6 @@ export default function PlacesPage() {
       })
       .catch(() => setLoaded(true))
   }, [])
-
-  useEffect(() => {
-    const pending = places.filter((place) => !place.photo_url && place.google_place_id)
-    if (pending.length === 0) return
-
-    pending.forEach((place) => {
-      fetch(`/api/places/photo?place_id=${encodeURIComponent(place.google_place_id!)}`)
-        .then((r) => r.json())
-        .then((data: { photo_url?: string | null }) => {
-          if (!data.photo_url) return
-          setPlaces((prev) => prev.map((item) => (
-            item.id === place.id ? { ...item, photo_url: data.photo_url ?? null } : item
-          )))
-        })
-        .catch(() => {})
-    })
-  }, [places])
 
   async function removePlace(id: string) {
     const res = await fetch(`/api/places/${encodeURIComponent(id)}`, { method: 'DELETE' })
@@ -114,6 +90,7 @@ export default function PlacesPage() {
         <nav className="section-nav" aria-label="Sections">
           <Link href="/" className="section-nav-link">Links</Link>
           <Link href="/places" className="section-nav-link section-nav-link-active">Places</Link>
+          <Link href="/feed" className="section-nav-link">Feed</Link>
         </nav>
       </header>
 
@@ -148,23 +125,24 @@ export default function PlacesPage() {
               </button>
 
               <div className="card-preview place-preview">
-                {place.photo_url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={place.photo_url}
-                    alt={place.name}
-                    className="card-preview-img"
-                    onError={() => {
-                      setPlaces((prev) => prev.map((item) => (
-                        item.id === place.id ? { ...item, photo_url: null } : item
-                      )))
-                    }}
-                  />
-                ) : (
-                  <div className="place-preview-placeholder" aria-hidden="true">
-                    <span className="place-preview-emoji">🗺️</span>
-                  </div>
-                )}
+                {(() => {
+                  const src = placePhotoSrc(place)
+                  return src ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={src}
+                      alt={place.name}
+                      className="card-preview-img"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).parentElement!.classList.add('place-preview-failed')
+                      }}
+                    />
+                  ) : (
+                    <div className="place-preview-placeholder" aria-hidden="true">
+                      <span className="place-preview-emoji">🗺️</span>
+                    </div>
+                  )
+                })()}
               </div>
 
               <div className="card-top place-card-top">

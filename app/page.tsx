@@ -207,6 +207,7 @@ export default function Home() {
         <nav className="section-nav" aria-label="Sections">
           <Link href="/" className="section-nav-link section-nav-link-active">Links</Link>
           <Link href="/places" className="section-nav-link">Places</Link>
+          <Link href="/feed" className="section-nav-link">Feed</Link>
         </nav>
 
         <div className="search-wrap">

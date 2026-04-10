@@ -1,31 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
-import path from 'path'
-
-interface Place {
-  id: string
-  name: string
-  address: string
-  category: string
-  maps_url: string
-  note: string
-  tags: string[]
-  date_added: string
-  visited: boolean
-  photo_url: string | null
-  google_place_id?: string | null
-}
-
-const placesPath = path.join(process.cwd(), 'data', 'places.json')
-
-async function readPlaces(): Promise<Place[]> {
-  const raw = await fs.readFile(placesPath, 'utf8')
-  return JSON.parse(raw) as Place[]
-}
-
-async function writePlaces(places: Place[]) {
-  await fs.writeFile(placesPath, JSON.stringify(places, null, 2) + '\n', 'utf8')
-}
+import { readPlaces, writePlaces } from '@/lib/places-store'
 
 export async function DELETE(_: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
