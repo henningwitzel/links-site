@@ -1,19 +1,5 @@
 [
   {
-    "url": "https://example.com/test-link-intake-2",
-    "title": "Test Link Intake 2",
-    "type": "article",
-    "author": "",
-    "summary": "Second test summary for verifying the full link intake pipeline. This entry exists only to confirm the add, sync, commit, and push flow works end to end.",
-    "relevance": "Pipeline verification only. Used to validate the full link intake flow and GitHub push.",
-    "tags": [
-      "test",
-      "pipeline"
-    ],
-    "date_added": "2026-04-10",
-    "domain": "example.com"
-  },
-  {
     "url": "https://www.youtube.com/watch?v=6V-b073qhPA&is=LWngmcCT2ntxUM5E",
     "title": "Personal memory system for agents",
     "type": "youtube",
@@ -28,6 +14,20 @@
     ],
     "date_added": "2026-04-10",
     "domain": "youtube.com"
+  },
+  {
+    "url": "https://example.com/test-link-intake-2",
+    "title": "Test Link Intake 2",
+    "type": "article",
+    "author": "",
+    "summary": "Second test summary for verifying the full link intake pipeline. This entry exists only to confirm the add, sync, commit, and push flow works end to end.",
+    "relevance": "Pipeline verification only. Used to validate the full link intake flow and GitHub push.",
+    "tags": [
+      "test",
+      "pipeline"
+    ],
+    "date_added": "2026-04-10",
+    "domain": "example.com"
   },
   {
     "url": "https://intura.app/blog/update-for-everyone",
