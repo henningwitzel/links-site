@@ -1,5 +1,25 @@
 [
   {
+    "url": "https://youtu.be/QvfqAMUJTT4?is=CRCHXMkRrO79MMU0",
+    "title": "3 Tools That Make OpenClaw Actually Useful",
+    "type": "youtube",
+    "author": "Unknown",
+    "summary": "Video walkthrough of three upgrades for OpenClaw: AgentMail for dedicated agent email, QMD for stronger local memory retrieval, and Agent Browser for token-efficient web interaction.",
+    "relevance": "Directly relevant to Henning's OpenClaw ecosystem. Covers practical improvements to agent email, memory, and browsing, and strongly reinforces memory/search as the highest-leverage upgrade.",
+    "tags": [
+      "openclaw",
+      "youtube",
+      "agents",
+      "memory",
+      "email",
+      "browser",
+      "qmd",
+      "agentmail"
+    ],
+    "date_added": "2026-04-12",
+    "domain": "youtube.com"
+  },
+  {
     "url": "https://www.youtube.com/watch?v=6V-b073qhPA&is=LWngmcCT2ntxUM5E",
     "title": "Personal memory system for agents",
     "type": "youtube",
