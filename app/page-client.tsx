@@ -123,6 +123,10 @@ export default function HomeClient({ initialLinks }: { initialLinks: LinkItem[] 
         </div>
       )}
 
+      <p style={{ color: 'red', fontSize: '1.2rem', padding: '1rem', background: 'yellow' }}>
+        DEBUG: {filtered.length} links, {initialLinks.length} total
+      </p>
+
       {filtered.length > 0 ? (
         <div className="simple-card-grid">
           {filtered.map((link, i) => (
