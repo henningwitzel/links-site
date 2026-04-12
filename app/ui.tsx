@@ -25,6 +25,12 @@ function useThemeMode() {
   return { dark, toggleTheme, mounted }
 }
 
+const NAV_ITEMS = [
+  { href: '/', label: 'Home', key: 'home' },
+  { href: '/feed', label: 'Feed', key: 'feed' },
+  { href: '/places', label: 'Places', key: 'places' },
+] as const
+
 export function AppShell({
   active,
   title,
@@ -42,44 +48,34 @@ export function AppShell({
 
   return (
     <>
-      <nav style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem',
-        padding: '1rem',
-        borderBottom: '1px solid var(--border)',
-        flexWrap: 'wrap',
-      }}>
-        <div style={{ marginRight: 'auto' }}>
-          <div style={{ fontWeight: 800, fontSize: '1.2rem' }}>links</div>
+      {/* Top nav — sticky, blur backdrop */}
+      <nav className="top-nav">
+        <div className="top-nav-inner">
+          <Link href="/" className="top-nav-brand">links</Link>
+
+          <div className="top-nav-chips">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.key}
+                href={item.href}
+                className={`ig-chip ${active === item.key ? 'ig-chip-active' : ''}`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          {mounted && (
+            <button className="theme-toggle" onClick={toggleTheme} aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}>
+              {dark ? '☀️' : '🌙'}
+            </button>
+          )}
         </div>
-        {[
-          { href: '/', label: 'Home', key: 'home' },
-          { href: '/feed', label: 'Feed', key: 'feed' },
-          { href: '/places', label: 'Places', key: 'places' },
-        ].map((item) => (
-          <Link
-            key={item.key}
-            href={item.href}
-            className={`ig-chip ${active === item.key ? 'ig-chip-active' : ''}`}
-          >
-            {item.label}
-          </Link>
-        ))}
-        {mounted && (
-          <button className="ig-chip" onClick={toggleTheme} style={{ cursor: 'pointer' }}>
-            {dark ? '☀️' : '🌙'}
-          </button>
-        )}
       </nav>
 
-      <main style={{ padding: '1.25rem 1rem 3rem', maxWidth: '1100px', margin: '0 auto' }}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.5rem',
-          marginBottom: '1.25rem',
-        }}>
+      {/* Main content */}
+      <main className="main-content">
+        <div className="page-header">
           <div>
             <h1 className="ig-page-title">{title}</h1>
             <p className="ig-page-sub">{subtitle}</p>
@@ -88,6 +84,25 @@ export function AppShell({
         </div>
         {children}
       </main>
+
+      {/* Bottom tab bar — mobile only, fixed */}
+      <nav className="bottom-nav" aria-label="Mobile navigation">
+        {NAV_ITEMS.map((item) => (
+          <Link
+            key={item.key}
+            href={item.href}
+            className={`bottom-nav-tab ${active === item.key ? 'bottom-nav-tab-active' : ''}`}
+            aria-current={active === item.key ? 'page' : undefined}
+          >
+            <span className="bottom-nav-icon">
+              {item.key === 'home' && '⌂'}
+              {item.key === 'feed' && '☰'}
+              {item.key === 'places' && '📍'}
+            </span>
+            <span className="bottom-nav-label">{item.label}</span>
+          </Link>
+        ))}
+      </nav>
     </>
   )
 }

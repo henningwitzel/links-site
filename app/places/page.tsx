@@ -61,7 +61,7 @@ export default function PlacesPage() {
       subtitle="Restaurants, cafés, and spots worth trying, polished into the same system."
     >
       {!loaded && (
-        <div className="ig-feed-grid">
+        <div className="simple-card-grid">
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="ig-post ig-post-skeleton">
               <div className="skeleton-line skeleton-line-title" style={{ width: '40%', margin: '1rem' }} />
@@ -77,7 +77,7 @@ export default function PlacesPage() {
       )}
 
       {loaded && places.length > 0 && (
-        <div className="ig-feed-grid">
+        <div className="simple-card-grid">
           {places.map((place, index) => (
             <article
               key={place.id}

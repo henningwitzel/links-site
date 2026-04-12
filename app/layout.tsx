@@ -19,9 +19,14 @@ export const metadata: Metadata = {
   description: 'Things worth coming back to',
 }
 
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light')}catch(e){}})();`
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${serif.variable} ${sans.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>{children}</body>
     </html>
   )
