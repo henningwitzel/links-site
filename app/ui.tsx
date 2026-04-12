@@ -3,14 +3,16 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-export function useThemeMode() {
+function useThemeMode() {
   const [dark, setDark] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem('theme')
     const isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)
     setDark(isDark)
     document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+    setMounted(true)
   }, [])
 
   function toggleTheme() {
@@ -20,19 +22,7 @@ export function useThemeMode() {
     localStorage.setItem('theme', next ? 'dark' : 'light')
   }
 
-  return { dark, toggleTheme }
-}
-
-function IconHome() {
-  return <span className="ig-nav-icon" aria-hidden="true">⌂</span>
-}
-
-function IconFeed() {
-  return <span className="ig-nav-icon" aria-hidden="true">▣</span>
-}
-
-function IconPlaces() {
-  return <span className="ig-nav-icon" aria-hidden="true">⌖</span>
+  return { dark, toggleTheme, mounted }
 }
 
 export function AppShell({
@@ -48,61 +38,56 @@ export function AppShell({
   children: React.ReactNode
   right?: React.ReactNode
 }) {
-  const { dark, toggleTheme } = useThemeMode()
+  const { dark, toggleTheme, mounted } = useThemeMode()
 
   return (
-    <main className="ig-shell">
-      <aside className="ig-sidebar">
-        <div className="ig-brand-wrap">
-          <div className="ig-brand">links</div>
-          <div className="ig-brand-sub">Henning’s archive</div>
+    <>
+      <nav style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        padding: '1rem',
+        borderBottom: '1px solid var(--border)',
+        flexWrap: 'wrap',
+      }}>
+        <div style={{ marginRight: 'auto' }}>
+          <div style={{ fontWeight: 800, fontSize: '1.2rem' }}>links</div>
         </div>
-
-        <nav className="ig-sidebar-nav" aria-label="Sections">
-          <Link href="/" className={`ig-nav-link ${active === 'home' ? 'ig-nav-link-active' : ''}`}>
-            <IconHome />
-            <span>Home</span>
+        {[
+          { href: '/', label: 'Home', key: 'home' },
+          { href: '/feed', label: 'Feed', key: 'feed' },
+          { href: '/places', label: 'Places', key: 'places' },
+        ].map((item) => (
+          <Link
+            key={item.key}
+            href={item.href}
+            className={`ig-chip ${active === item.key ? 'ig-chip-active' : ''}`}
+          >
+            {item.label}
           </Link>
-          <Link href="/feed" className={`ig-nav-link ${active === 'feed' ? 'ig-nav-link-active' : ''}`}>
-            <IconFeed />
-            <span>Feed</span>
-          </Link>
-          <Link href="/places" className={`ig-nav-link ${active === 'places' ? 'ig-nav-link-active' : ''}`}>
-            <IconPlaces />
-            <span>Places</span>
-          </Link>
-        </nav>
+        ))}
+        {mounted && (
+          <button className="ig-chip" onClick={toggleTheme} style={{ cursor: 'pointer' }}>
+            {dark ? '☀️' : '🌙'}
+          </button>
+        )}
+      </nav>
 
-        <button className="theme-toggle ig-theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode">
-          {dark ? '☀️ Light mode' : '🌙 Dark mode'}
-        </button>
-      </aside>
-
-      <section className="ig-main">
-        <header className="ig-topbar">
+      <main style={{ padding: '1.25rem 1rem 3rem', maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem',
+          marginBottom: '1.25rem',
+        }}>
           <div>
             <h1 className="ig-page-title">{title}</h1>
             <p className="ig-page-sub">{subtitle}</p>
           </div>
-          {right ? <div className="ig-topbar-right">{right}</div> : null}
-        </header>
+          {right && <div>{right}</div>}
+        </div>
         {children}
-      </section>
-
-      <nav className="ig-mobile-nav" aria-label="Primary">
-        <Link href="/" className={`ig-mobile-nav-link ${active === 'home' ? 'ig-mobile-nav-link-active' : ''}`}>
-          <IconHome />
-          <span>Home</span>
-        </Link>
-        <Link href="/feed" className={`ig-mobile-nav-link ${active === 'feed' ? 'ig-mobile-nav-link-active' : ''}`}>
-          <IconFeed />
-          <span>Feed</span>
-        </Link>
-        <Link href="/places" className={`ig-mobile-nav-link ${active === 'places' ? 'ig-mobile-nav-link-active' : ''}`}>
-          <IconPlaces />
-          <span>Places</span>
-        </Link>
-      </nav>
-    </main>
+      </main>
+    </>
   )
 }

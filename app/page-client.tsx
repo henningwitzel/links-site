@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { AppShell } from './ui'
 
 export interface LinkItem {
   date: string
@@ -14,51 +15,123 @@ export interface LinkItem {
   domain: string
 }
 
-export default function HomeClient({ initialLinks }: { initialLinks: LinkItem[] }) {
-  const [query, setQuery] = useState('')
+function formatDate(iso: string) {
+  const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/)
+  if (!m) return iso
+  return `${m[3]}.${m[2]}.${m[1]}`
+}
 
-  const filtered = initialLinks.filter((l) => {
-    if (!query) return true
-    const q = query.toLowerCase()
-    return l.title.toLowerCase().includes(q) || l.notes.toLowerCase().includes(q)
-  })
+function LinkCard({ link }: { link: LinkItem }) {
+  const cleanUrl = link.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')
 
   return (
-    <div style={{ maxWidth: 700, margin: '0 auto', padding: '24px 16px' }}>
-      <h1 style={{ fontSize: '1.8rem', margin: '0 0 4px' }}>Henning&apos;s saved links</h1>
-      <p style={{ color: '#888', margin: '0 0 16px' }}>{filtered.length} links</p>
+    <article className="simple-card">
+      <div className="simple-card-top">
+        <div className="simple-card-site">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`https://www.google.com/s2/favicons?sz=64&domain=${link.domain}`}
+            width={20}
+            height={20}
+            className="simple-card-favicon"
+            alt=""
+            onError={(e) => ((e.currentTarget as HTMLImageElement).style.visibility = 'hidden')}
+          />
+          <span className="simple-card-domain">{link.domain.replace(/^www\./, '')}</span>
+        </div>
+        <span className="simple-card-date">{formatDate(link.date)}</span>
+      </div>
 
+      <a href={link.url} target="_blank" rel="noopener noreferrer" className="simple-card-link">
+        <h2 className="simple-card-title">{link.title}</h2>
+      </a>
+
+      {link.notes && <p className="simple-card-text">{link.notes}</p>}
+      {link.relevance && <p className="simple-card-callout">💡 {link.relevance}</p>}
+
+      {link.tags && link.tags.length > 0 && (
+        <div className="simple-card-tags">
+          {link.tags.map((tag) => (
+            <span key={tag} className="simple-card-tag">#{tag}</span>
+          ))}
+        </div>
+      )}
+
+      <div className="simple-card-footer">{cleanUrl}</div>
+    </article>
+  )
+}
+
+export default function HomeClient({ initialLinks }: { initialLinks: LinkItem[] }) {
+  const [query, setQuery] = useState('')
+  const [activeTag, setActiveTag] = useState<string | null>(null)
+
+  const allTags = useMemo(() => Array.from(new Set(initialLinks.flatMap((l) => l.tags || []))).sort(), [initialLinks])
+
+  const filtered = initialLinks.filter((l) => {
+    const matchesTag = !activeTag || (l.tags && l.tags.includes(activeTag))
+    const matchesQuery = !query || (
+      l.title.toLowerCase().includes(query.toLowerCase()) ||
+      l.notes.toLowerCase().includes(query.toLowerCase()) ||
+      (l.relevance && l.relevance.toLowerCase().includes(query.toLowerCase())) ||
+      (l.tags && l.tags.some((t) => t.toLowerCase().includes(query.toLowerCase()))) ||
+      l.domain.toLowerCase().includes(query.toLowerCase())
+    )
+    return matchesTag && matchesQuery
+  })
+
+  const right = (
+    <div className="ig-search-block">
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Search saved links..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        style={{
-          width: '100%',
-          padding: '12px 16px',
-          fontSize: '1rem',
-          border: '1px solid #ddd',
-          borderRadius: '8px',
-          marginBottom: '20px',
-          boxSizing: 'border-box',
-        }}
+        aria-label="Search links"
+        className="ig-search-input"
+        autoComplete="off"
+        spellCheck={false}
       />
-
-      {filtered.map((link, i) => (
-        <div key={`${link.url}-${i}`} style={{
-          border: '1px solid #ddd',
-          borderRadius: '12px',
-          padding: '16px',
-          marginBottom: '12px',
-          background: '#fff',
-        }}>
-          <a href={link.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#111' }}>
-            <strong style={{ fontSize: '1rem', display: 'block', marginBottom: '6px' }}>{link.title}</strong>
-          </a>
-          {link.notes && <p style={{ margin: '0 0 6px', color: '#555', fontSize: '0.85rem', lineHeight: '1.5' }}>{link.notes}</p>}
-          <span style={{ fontSize: '0.75rem', color: '#aaa' }}>{link.domain} · {link.date}</span>
-        </div>
-      ))}
+      <span className="ig-search-count">{`${filtered.length} links`}</span>
     </div>
+  )
+
+  return (
+    <AppShell
+      active="home"
+      title="Henning's saved links"
+      subtitle="Clear, fast, and visible first."
+      right={right}
+    >
+      {allTags.length > 0 && (
+        <div className="ig-chip-row">
+          <button
+            className={`ig-chip ${activeTag === null ? 'ig-chip-active' : ''}`}
+            onClick={() => setActiveTag(null)}
+          >
+            All
+          </button>
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              className={`ig-chip ${activeTag === tag ? 'ig-chip-active' : ''}`}
+              onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+            >
+              #{tag}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div className="simple-card-grid">
+        {filtered.map((link, i) => (
+          <LinkCard key={`${link.url}-${i}`} link={link} />
+        ))}
+      </div>
+
+      {filtered.length === 0 && (
+        <p className="empty-state">No links match that search.</p>
+      )}
+    </AppShell>
   )
 }
