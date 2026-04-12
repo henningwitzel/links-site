@@ -17,6 +17,12 @@ const sans = DM_Sans({
 export const metadata: Metadata = {
   title: "Henning's Link Collection",
   description: 'Things worth coming back to',
+  viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Links',
+  },
 }
 
 const themeScript = `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light')}catch(e){}})();`

@@ -63,6 +63,7 @@ button, input { font: inherit; }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+  padding-top: env(safe-area-inset-top);
 }
 
 .top-nav-inner {
@@ -140,7 +141,7 @@ button, input { font: inherit; }
 /* ===== Main content ===== */
 
 .main-content {
-  padding: 1.25rem 1rem 3rem;
+  padding: 1.25rem max(1rem, env(safe-area-inset-right)) 3rem max(1rem, env(safe-area-inset-left));
   max-width: 1100px;
   margin: 0 auto;
 }
