@@ -34,7 +34,8 @@
       "workflow"
     ],
     "date_added": "2026-04-10",
-    "domain": "youtube.com"
+    "domain": "youtube.com",
+    "notes": "A video about building a personal memory system for agents, including transcript-first workflows, visual memory exploration, and using memory as a reusable agent rule system."
   },
   {
     "url": "https://example.com/test-link-intake-2",
@@ -48,7 +49,8 @@
       "pipeline"
     ],
     "date_added": "2026-04-10",
-    "domain": "example.com"
+    "domain": "example.com",
+    "notes": "Second test summary for verifying the full link intake pipeline. This entry exists only to confirm the add, sync, commit, and push flow works end to end."
   },
   {
     "url": "https://intura.app/blog/update-for-everyone",
@@ -64,7 +66,8 @@
       "personal-productivity"
     ],
     "date_added": "2026-04-08",
-    "domain": "intura.app"
+    "domain": "intura.app",
+    "notes": "Intura expands from a manager-only app into a career and leadership companion for everyone. The update adds role-based onboarding, tailored prompts for managers and non-managers, and coaching frameworks that fit each working style while preserving the same privacy model."
   },
   {
     "url": "https://x.com/wasimships/status/2040753893131391349",
@@ -82,7 +85,8 @@
       "mobile"
     ],
     "date_added": "2026-04-06",
-    "domain": "x.com"
+    "domain": "x.com",
+    "notes": "7 onboarding mistakes: 1) asking for permissions on launch, 2) mandatory sign-up before showing value, 3) tutorial slides with no interaction, 4) too many choices on home screen, 5) no empty state design, 6) ignoring iPhone SE viewport, 7) no win in first session. Retention is an onboarding problem 80% of the time."
   },
   {
     "url": "https://thenextweb.com/news/anthropic-openclaw-claude-subscription-ban-cost",
@@ -101,7 +105,8 @@
       "policy"
     ],
     "date_added": "2026-04-05",
-    "domain": "thenextweb.com"
+    "domain": "thenextweb.com",
+    "notes": "From 4 April 2026, Anthropic blocked Claude Pro/Max subscribers from using flat-rate plans with third-party agent frameworks including OpenClaw. Agentic use was costing Anthropic $1,000–$5,000/day per heavy user under a $200/month plan. Users face 10–50× cost increases; workaround is supplying a separate API key (Sonnet 4.6: $3/$15 per M tokens)."
   },
   {
     "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/",
@@ -122,7 +127,8 @@
     ],
     "date": "2026-04-05",
     "date_added": "2026-04-05",
-    "domain": "blog.google"
+    "domain": "blog.google",
+    "notes": "Google releases Gemma 4 in four sizes (E2B, E4B, 26B MoE, 31B Dense) under Apache 2.0. Built from the same research as Gemini 3, with native agentic support (function-calling, JSON output), 128K–256K context, multimodal input, and day-one Ollama support. The 31B model ranks #3 open model on Arena AI leaderboard."
   },
   {
     "url": "https://youtu.be/CYBZmwOmsk8",
@@ -139,7 +145,8 @@
       "automation"
     ],
     "date": "2026-04-01",
-    "date_added": "2026-04-01"
+    "date_added": "2026-04-01",
+    "notes": "Full walkthrough of building a multi-agent AI team with OpenClaw. Shows how to run multiple specialized agents on one server, each with their own memory, personality, skills, and model — orchestrated by one main agent."
   },
   {
     "url": "https://youtu.be/Pl0s83kpIT0",
@@ -160,7 +167,8 @@
       "free"
     ],
     "date": "2026-04-01",
-    "date_added": "2026-04-01"
+    "date_added": "2026-04-01",
+    "notes": "Full walkthrough for running OpenClaw at zero API cost using Ollama and open-source LLMs. Covers installing Ollama, choosing a model (Qwen 3.5 recommended), connecting it to OpenClaw during setup or switching an existing install, understanding model sizes vs. available RAM, and connecting external apps via Zapier MCP. Sponsored by Zapier."
   },
   {
     "date": "2026-03-30",
