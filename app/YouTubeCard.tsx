@@ -22,7 +22,7 @@ function extractYouTubeId(url: string): string | null {
     /(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
     /youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/,
   ]
-  
+
   for (const pattern of patterns) {
     const match = url.match(pattern)
     if (match) return match[1]
@@ -32,33 +32,69 @@ function extractYouTubeId(url: string): string | null {
 
 function formatDate(dateStr: string): string {
   const date = new Date(dateStr)
-  return date.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })
+  return date.toLocaleDateString('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' })
+}
+
+function formatAccessed(ts: number): string {
+  const now = Date.now()
+  const diff = now - ts
+  const mins = Math.floor(diff / 60000)
+  const hours = Math.floor(diff / 3600000)
+  const days = Math.floor(diff / 86400000)
+  if (mins < 1) return 'just now'
+  if (mins < 60) return `${mins}m ago`
+  if (hours < 24) return `${hours}h ago`
+  if (days === 1) return 'yesterday'
+  if (days < 7) return `${days}d ago`
+  return formatDate(new Date(ts).toISOString().split('T')[0])
 }
 
 export default function YouTubeCard({ link, lastAccess, onClickLink, index = 0 }: YouTubeCardProps) {
   const [showModal, setShowModal] = useState(false)
   const videoId = extractYouTubeId(link.url)
-  
+
   if (!videoId) return null
 
   return (
     <>
-      {/* Card */}
-      <div
-        className="link-card youtube-card"
+      <article
+        className="ig-post ig-post-video"
         style={{ '--card-index': Math.min(index || 0, 12) } as React.CSSProperties}
-        onClick={() => {
-          setShowModal(true)
-          onClickLink(link.url)
-        }}
       >
-        {/* YouTube thumbnail with play button overlay */}
-        <div className="youtube-thumbnail">
+        <div className="ig-post-header">
+          <div className="ig-post-user">
+            <div className="ig-avatar-ring">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`https://www.google.com/s2/favicons?sz=64&domain=${link.domain}`}
+                width={32}
+                height={32}
+                className="ig-avatar"
+                alt=""
+                onError={(e) => ((e.currentTarget as HTMLImageElement).style.visibility = 'hidden')}
+              />
+            </div>
+            <div className="ig-user-meta">
+              <span className="ig-username">{link.domain.replace(/^www\./, '')}</span>
+              <span className="ig-location">video save</span>
+            </div>
+          </div>
+          <span className="ig-menu" aria-hidden="true">•••</span>
+        </div>
+
+        <button
+          type="button"
+          className="youtube-thumbnail ig-media-button"
+          onClick={() => {
+            setShowModal(true)
+            onClickLink(link.url)
+          }}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
             alt={link.title}
-            className="youtube-thumb-img"
+            className="youtube-thumb-img ig-media"
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
             }}
@@ -68,56 +104,43 @@ export default function YouTubeCard({ link, lastAccess, onClickLink, index = 0 }
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>
+        </button>
+
+        <div className="ig-actions">
+          <div className="ig-actions-left" aria-hidden="true">
+            <span className="ig-icon">♡</span>
+            <span className="ig-icon">💬</span>
+            <span className="ig-icon">↗</span>
+          </div>
+          <span className="ig-icon" aria-hidden="true">⌁</span>
         </div>
 
-        {/* Top: favicon + title */}
-        <div className="card-top">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`https://www.google.com/s2/favicons?sz=32&domain=${link.domain}`}
-            width={20}
-            height={20}
-            className="card-favicon"
-            alt=""
-            onError={(e) => ((e.currentTarget as HTMLImageElement).style.visibility = 'hidden')}
-          />
-          <span className="card-title">{link.title}</span>
-        </div>
-
-        {/* Body: notes + relevance + url */}
-        <div className="card-body">
+        <div className="ig-body">
+          <div className="ig-likes">Saved video</div>
+          <h2 className="ig-title">{link.title}</h2>
           {link.notes && (
-            <p className="card-notes">{link.notes}</p>
+            <p className="ig-caption">
+              <span className="ig-caption-author">henning</span>{' '}
+              {link.notes}
+            </p>
           )}
           {link.relevance && (
-            <p className="card-relevance">💡 {link.relevance}</p>
+            <p className="ig-relevance">💡 {link.relevance}</p>
           )}
-          <span className="card-url">
-            youtube.com
-          </span>
-        </div>
-
-        {/* Tags */}
-        {link.tags && link.tags.length > 0 && (
-          <div className="card-tags">
-            {link.tags.map((tag) => (
-              <span key={tag} className="card-tag">{tag}</span>
-            ))}
+          {link.tags && link.tags.length > 0 && (
+            <div className="ig-tags">
+              {link.tags.map((tag) => (
+                <button key={tag} type="button" className="ig-tag">#{tag}</button>
+              ))}
+            </div>
+          )}
+          <div className="ig-meta-row">
+            <span>{formatDate(link.date)}</span>
+            {lastAccess && <span>{formatAccessed(lastAccess)}</span>}
           </div>
-        )}
-
-        {/* Footer: dates */}
-        <div className="card-footer">
-          <span className="meta-date">{formatDate(link.date)}</span>
-          {lastAccess && (
-            <span className="meta-accessed" title="Last accessed">
-              Accessed {formatDate(new Date(lastAccess).toISOString().split('T')[0])}
-            </span>
-          )}
         </div>
-      </div>
+      </article>
 
-      {/* Modal */}
       {showModal && (
         <div className="youtube-modal" onClick={() => setShowModal(false)}>
           <div className="youtube-modal-content" onClick={(e) => e.stopPropagation()}>

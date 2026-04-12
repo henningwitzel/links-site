@@ -1,9 +1,9 @@
 'use client'
 
 import type { CSSProperties } from 'react'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import type { Place } from '@/lib/types'
+import { AppShell } from '../ui'
 
 function placePhotoSrc(place: Place): string | null {
   if (place.photo_url) return place.photo_url
@@ -22,22 +22,6 @@ function formatDate(iso: string) {
 export default function PlacesPage() {
   const [places, setPlaces] = useState<Place[]>([])
   const [loaded, setLoaded] = useState(false)
-  const [dark, setDark] = useState(false)
-
-  useEffect(() => {
-    const saved = localStorage.getItem('theme')
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setDark(true)
-      document.documentElement.setAttribute('data-theme', 'dark')
-    }
-  }, [])
-
-  function toggleTheme() {
-    const next = !dark
-    setDark(next)
-    document.documentElement.setAttribute('data-theme', next ? 'dark' : 'light')
-    localStorage.setItem('theme', next ? 'dark' : 'light')
-  }
 
   useEffect(() => {
     fetch('/api/places')
@@ -71,60 +55,56 @@ export default function PlacesPage() {
   }
 
   return (
-    <main className="page-wrap">
-      <header className="page-header">
-        <div className="header-row">
-          <div>
-            <h1 className="page-title font-serif">Places to Try</h1>
-            <p className="header-sub">Saved spots worth visiting</p>
-          </div>
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle dark mode"
-          >
-            {dark ? '☀️' : '🌙'}
-          </button>
-        </div>
-
-        <nav className="section-nav" aria-label="Sections">
-          <Link href="/" className="section-nav-link">Links</Link>
-          <Link href="/places" className="section-nav-link section-nav-link-active">Places</Link>
-          <Link href="/feed" className="section-nav-link">Feed</Link>
-        </nav>
-      </header>
-
+    <AppShell
+      active="places"
+      title="Saved places"
+      subtitle="Restaurants, cafés, and spots worth trying, polished into the same system."
+    >
       {!loaded && (
-        <div className="skeleton-grid">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="skeleton-card">
-              <div className="skeleton-line skeleton-line-title" />
-              <div className="skeleton-line skeleton-line-notes" />
-              <div className="skeleton-line skeleton-line-notes2" />
-              <div className="skeleton-line skeleton-line-url" />
+        <div className="ig-feed-grid">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="ig-post ig-post-skeleton">
+              <div className="skeleton-line skeleton-line-title" style={{ width: '40%', margin: '1rem' }} />
+              <div className="ig-skeleton-media" />
+              <div style={{ padding: '1rem' }}>
+                <div className="skeleton-line skeleton-line-title" style={{ width: '72%' }} />
+                <div className="skeleton-line skeleton-line-notes" style={{ marginTop: '0.75rem' }} />
+                <div className="skeleton-line skeleton-line-notes2" style={{ marginTop: '0.5rem' }} />
+              </div>
             </div>
           ))}
         </div>
       )}
 
       {loaded && places.length > 0 && (
-        <div className="card-grid">
+        <div className="ig-feed-grid">
           {places.map((place, index) => (
             <article
               key={place.id}
-              className="link-card place-card"
+              className="ig-post ig-place-post"
               style={{ '--card-index': Math.min(index, 12) } as CSSProperties}
             >
-              <button
-                type="button"
-                className="place-remove"
-                onClick={() => removePlace(place.id)}
-                aria-label={`Remove ${place.name}`}
-              >
-                ✕
-              </button>
+              <div className="ig-post-header">
+                <div className="ig-post-user">
+                  <div className="ig-avatar-ring ig-place-avatar-ring">
+                    <span className="ig-place-emoji" aria-hidden="true">📍</span>
+                  </div>
+                  <div className="ig-user-meta">
+                    <span className="ig-username">{place.name}</span>
+                    <span className="ig-location">{place.category}</span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="place-remove"
+                  onClick={() => removePlace(place.id)}
+                  aria-label={`Remove ${place.name}`}
+                >
+                  ✕
+                </button>
+              </div>
 
-              <div className="card-preview place-preview">
+              <div className="ig-media-frame ig-place-media">
                 {(() => {
                   const src = placePhotoSrc(place)
                   return src ? (
@@ -132,7 +112,7 @@ export default function PlacesPage() {
                     <img
                       src={src}
                       alt={place.name}
-                      className="card-preview-img"
+                      className="ig-media"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).parentElement!.classList.add('place-preview-failed')
                       }}
@@ -145,41 +125,18 @@ export default function PlacesPage() {
                 })()}
               </div>
 
-              <div className="card-top place-card-top">
-                <div className="place-card-heading">
-                  <span className="card-title">{place.name}</span>
-                  <span className="place-category">{place.category}</span>
+              <div className="ig-actions">
+                <div className="ig-actions-left">
+                  <button
+                    type="button"
+                    className={`visited-toggle ${place.visited ? 'visited-toggle-active' : ''}`}
+                    onClick={() => toggleVisited(place)}
+                    aria-pressed={place.visited}
+                    aria-label={place.visited ? `Mark ${place.name} as not visited` : `Mark ${place.name} as visited`}
+                  >
+                    {place.visited ? '✓ Visited' : '○ Want to go'}
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  className={`visited-toggle ${place.visited ? 'visited-toggle-active' : ''}`}
-                  onClick={() => toggleVisited(place)}
-                  aria-pressed={place.visited}
-                  aria-label={place.visited ? `Mark ${place.name} as not visited` : `Mark ${place.name} as visited`}
-                >
-                  ✓
-                </button>
-              </div>
-
-              <div className="card-body">
-                <p className="card-notes">{place.address}</p>
-                {place.note && <p className="card-notes">{place.note}</p>}
-                {place.description && <p className="place-description">{place.description}</p>}
-                {place.what_to_order && (
-                  <p className="place-order-callout">🍽️ What to order: {place.what_to_order}</p>
-                )}
-              </div>
-
-              {place.tags.length > 0 && (
-                <div className="card-tags">
-                  {place.tags.map((tag) => (
-                    <span key={tag} className="card-tag">{tag}</span>
-                  ))}
-                </div>
-              )}
-
-              <div className="card-footer">
-                <span className="meta-date">Added {formatDate(place.date_added)}</span>
                 <a
                   href={place.maps_url}
                   target="_blank"
@@ -189,6 +146,35 @@ export default function PlacesPage() {
                   Maps ↗
                 </a>
               </div>
+
+              <div className="ig-body">
+                <div className="ig-likes">Saved place</div>
+                <h2 className="ig-title">{place.name}</h2>
+                <p className="ig-caption">
+                  <span className="ig-caption-author">address</span>{' '}
+                  {place.address}
+                </p>
+                {place.note && (
+                  <p className="ig-caption">
+                    <span className="ig-caption-author">note</span>{' '}
+                    {place.note}
+                  </p>
+                )}
+                {place.description && <p className="ig-caption">{place.description}</p>}
+                {place.what_to_order && (
+                  <p className="ig-relevance">🍽️ What to order: {place.what_to_order}</p>
+                )}
+                {place.tags.length > 0 && (
+                  <div className="ig-tags">
+                    {place.tags.map((tag) => (
+                      <span key={tag} className="ig-tag">#{tag}</span>
+                    ))}
+                  </div>
+                )}
+                <div className="ig-meta-row">
+                  <span>Added {formatDate(place.date_added)}</span>
+                </div>
+              </div>
             </article>
           ))}
         </div>
@@ -197,6 +183,6 @@ export default function PlacesPage() {
       {loaded && places.length === 0 && (
         <p className="empty-state">No places saved yet.</p>
       )}
-    </main>
+    </AppShell>
   )
 }
