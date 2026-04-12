@@ -21,44 +21,21 @@ function formatDate(iso: string) {
   return `${m[3]}.${m[2]}.${m[1]}`
 }
 
-function LinkCard({ link, index = 0 }: { link: LinkItem; index?: number }) {
-  const cleanUrl = link.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')
-
+function LinkCard({ link }: { link: LinkItem }) {
   return (
-    <article className="simple-card" style={{ '--card-index': Math.min(index, 12) } as React.CSSProperties}>
-      <div className="simple-card-top">
-        <div className="simple-card-site">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`https://www.google.com/s2/favicons?sz=64&domain=${link.domain}`}
-            width={20}
-            height={20}
-            className="simple-card-favicon"
-            alt=""
-            onError={(e) => ((e.currentTarget as HTMLImageElement).style.visibility = 'hidden')}
-          />
-          <span className="simple-card-domain">{link.domain.replace(/^www\./, '')}</span>
-        </div>
-        <span className="simple-card-date">{formatDate(link.date)}</span>
-      </div>
-
-      <a href={link.url} target="_blank" rel="noopener noreferrer" className="simple-card-link">
-        <h2 className="simple-card-title">{link.title}</h2>
+    <div style={{
+      background: '#fff',
+      border: '1px solid #ddd',
+      borderRadius: '12px',
+      padding: '16px',
+      marginBottom: '12px',
+    }}>
+      <a href={link.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#000' }}>
+        <h3 style={{ margin: '0 0 8px', fontSize: '1.05rem', fontWeight: 700 }}>{link.title}</h3>
       </a>
-
-      {link.notes && <p className="simple-card-text">{link.notes}</p>}
-      {link.relevance && <p className="simple-card-callout">💡 {link.relevance}</p>}
-
-      {link.tags && link.tags.length > 0 && (
-        <div className="simple-card-tags">
-          {link.tags.map((tag) => (
-            <span key={tag} className="simple-card-tag">#{tag}</span>
-          ))}
-        </div>
-      )}
-
-      <div className="simple-card-footer">{cleanUrl}</div>
-    </article>
+      {link.notes && <p style={{ margin: '0 0 8px', color: '#666', fontSize: '0.9rem', lineHeight: 1.5 }}>{link.notes}</p>}
+      <span style={{ fontSize: '0.75rem', color: '#999' }}>{link.domain}</span>
+    </div>
   )
 }
 
@@ -128,9 +105,9 @@ export default function HomeClient({ initialLinks }: { initialLinks: LinkItem[] 
       </p>
 
       {filtered.length > 0 ? (
-        <div className="simple-card-grid">
+        <div style={{ maxWidth: '700px', margin: '0 auto' }}>
           {filtered.map((link, i) => (
-            <LinkCard key={`${link.url}-${i}`} link={link} index={i} />
+            <LinkCard key={`${link.url}-${i}`} link={link} />
           ))}
         </div>
       ) : (
