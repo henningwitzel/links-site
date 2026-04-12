@@ -17,7 +17,8 @@
       "agentmail"
     ],
     "date_added": "2026-04-12",
-    "domain": "youtube.com"
+    "domain": "youtube.com",
+    "notes": "Three concrete OpenClaw upgrades: AgentMail for a dedicated agent inbox, QMD for stronger local memory retrieval, and Agent Browser for more efficient web interaction than Playwright."
   },
   {
     "url": "https://www.youtube.com/watch?v=6V-b073qhPA&is=LWngmcCT2ntxUM5E",
