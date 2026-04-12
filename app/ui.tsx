@@ -73,13 +73,11 @@ function IconMoon({ size = 18 }: { size?: number }) {
 
 const NAV_ICONS: Record<string, (size?: number) => React.ReactNode> = {
   home: (s) => <IconHome size={s} />,
-  feed: (s) => <IconFeed size={s} />,
   places: (s) => <IconPlaces size={s} />,
 }
 
 const NAV_ITEMS = [
   { href: '/', label: 'Home', key: 'home' },
-  { href: '/feed', label: 'Feed', key: 'feed' },
   { href: '/places', label: 'Places', key: 'places' },
 ] as const
 
@@ -90,7 +88,7 @@ export function AppShell({
   children,
   right,
 }: {
-  active: 'home' | 'feed' | 'places'
+  active: 'home' | 'places'
   title: string
   subtitle: string
   children: React.ReactNode
