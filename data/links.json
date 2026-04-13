@@ -1,5 +1,25 @@
 [
   {
+    "url": "https://yepanywhere.com/",
+    "title": "Mobile supervision for Claude Code and Codex agents",
+    "type": "tool",
+    "author": "Yep Anywhere",
+    "summary": "Open source web interface for Claude Code and Codex that lets you supervise, approve, resume, and manage multi-session agent workflows from your phone or another machine, with optional encrypted relay access.",
+    "notes": "Mobile-first remote control for Claude Code and Codex sessions. Supports approvals, file uploads, multi-session dashboard, session resume, remote device control, and encrypted access without VPN setup.",
+    "relevance": "Highly relevant to Henning's AI coding workflow and OpenClaw-adjacent agent setup. Useful for supervising long-running Codex or Claude Code sessions from phone, especially when away from desk.",
+    "tags": [
+      "tool",
+      "agents",
+      "claude-code",
+      "codex",
+      "remote-control",
+      "mobile",
+      "developer-tools"
+    ],
+    "date_added": "2026-04-13",
+    "domain": "yepanywhere.com"
+  },
+  {
     "url": "https://youtu.be/QvfqAMUJTT4?is=CRCHXMkRrO79MMU0",
     "title": "3 Tools That Make OpenClaw Actually Useful",
     "type": "youtube",
