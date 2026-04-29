@@ -615,7 +615,7 @@ button, input { font: inherit; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.9rem 1rem 0;
+  padding: 0.9rem 1rem 0.35rem;
 }
 
 .ig-actions-left {
@@ -629,12 +629,16 @@ button, input { font: inherit; }
 }
 
 .ig-body {
-  padding: 0.8rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem 1rem 1.1rem;
   min-width: 0;
 }
 
 .ig-likes {
   color: var(--text-muted);
+  line-height: 1.35;
 }
 
 .ig-title {
