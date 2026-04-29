@@ -790,17 +790,47 @@ button, input { font: inherit; }
   position: relative;
 }
 
-.place-card-top {
-  display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-}
-
-.place-card-heading {
+.place-card-stack {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  min-width: 0;
+  gap: 0.65rem;
+}
+
+.place-card-media {
+  aspect-ratio: 4 / 5;
+}
+
+.place-card-media-skeleton {
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+}
+
+.place-card-dot {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.place-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.place-card-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .visited-toggle,
@@ -824,21 +854,9 @@ button, input { font: inherit; }
 }
 
 .place-remove {
-  width: 1.9rem;
-  height: 1.9rem;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.8rem;
   border-radius: 999px;
-}
-
-.ig-place-avatar-ring {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1rem;
-}
-
-.ig-place-emoji {
-  transform: translateY(-1px);
 }
 
 .place-preview-placeholder {

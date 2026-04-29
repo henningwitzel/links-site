@@ -1,6 +1,5 @@
 'use client'
 
-import type { CSSProperties } from 'react'
 import { useEffect, useState } from 'react'
 import type { Place } from '@/lib/types'
 import { AppShell } from '../ui'
@@ -63,13 +62,19 @@ export default function PlacesPage() {
       {!loaded && (
         <div className="simple-card-grid">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="ig-post ig-post-skeleton">
-              <div className="skeleton-line skeleton-line-title" style={{ width: '40%', margin: '1rem' }} />
-              <div className="ig-skeleton-media" />
-              <div style={{ padding: '1rem' }}>
+            <div key={i} className="simple-card">
+              <div className="simple-card-top">
+                <div className="simple-card-site">
+                  <div className="skeleton-line" style={{ width: '20px', height: '20px', borderRadius: '999px' }} />
+                  <div className="skeleton-line skeleton-line-title" style={{ width: '88px', height: '12px' }} />
+                </div>
+                <div className="skeleton-line skeleton-line-title" style={{ width: '64px', height: '12px' }} />
+              </div>
+              <div className="ig-skeleton-media place-card-media-skeleton" />
+              <div className="place-card-stack">
                 <div className="skeleton-line skeleton-line-title" style={{ width: '72%' }} />
-                <div className="skeleton-line skeleton-line-notes" style={{ marginTop: '0.75rem' }} />
-                <div className="skeleton-line skeleton-line-notes2" style={{ marginTop: '0.5rem' }} />
+                <div className="skeleton-line skeleton-line-notes" />
+                <div className="skeleton-line skeleton-line-notes2" />
               </div>
             </div>
           ))}
@@ -78,33 +83,17 @@ export default function PlacesPage() {
 
       {loaded && places.length > 0 && (
         <div className="simple-card-grid">
-          {places.map((place, index) => (
-            <article
-              key={place.id}
-              className="ig-post ig-place-post"
-              style={{ '--card-index': Math.min(index, 12) } as CSSProperties}
-            >
-              <div className="ig-post-header">
-                <div className="ig-post-user">
-                  <div className="ig-avatar-ring ig-place-avatar-ring">
-                    <span className="ig-place-emoji" aria-hidden="true">📍</span>
-                  </div>
-                  <div className="ig-user-meta">
-                    <span className="ig-username">{place.name}</span>
-                    <span className="ig-location">{place.category}</span>
-                  </div>
+          {places.map((place) => (
+            <article key={place.id} className="simple-card place-card">
+              <div className="simple-card-top">
+                <div className="simple-card-site">
+                  <span className="place-card-dot" aria-hidden="true">📍</span>
+                  <span className="simple-card-domain">{place.category}</span>
                 </div>
-                <button
-                  type="button"
-                  className="place-remove"
-                  onClick={() => removePlace(place.id)}
-                  aria-label={`Remove ${place.name}`}
-                >
-                  ✕
-                </button>
+                <span className="simple-card-date">{formatDate(place.date_added)}</span>
               </div>
 
-              <div className="ig-media-frame ig-place-media">
+              <div className="card-media place-card-media">
                 {(() => {
                   const src = placePhotoSrc(place)
                   return src ? (
@@ -112,7 +101,7 @@ export default function PlacesPage() {
                     <img
                       src={src}
                       alt={place.name}
-                      className="ig-media"
+                      className="card-media-img"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).parentElement!.classList.add('place-preview-failed')
                       }}
@@ -125,54 +114,48 @@ export default function PlacesPage() {
                 })()}
               </div>
 
-              <div className="ig-actions">
-                <div className="ig-actions-left">
+              <h2 className="simple-card-title">{place.name}</h2>
+              <p className="simple-card-text"><strong>address</strong> {place.address}</p>
+              {place.note && <p className="simple-card-text"><strong>note</strong> {place.note}</p>}
+              {place.description && <p className="simple-card-text">{place.description}</p>}
+              {place.what_to_order && <p className="simple-card-callout">🍽️ What to order: {place.what_to_order}</p>}
+
+              {place.tags.length > 0 && (
+                <div className="simple-card-tags">
+                  {place.tags.map((tag) => (
+                    <span key={tag} className="simple-card-tag">#{tag}</span>
+                  ))}
+                </div>
+              )}
+
+              <div className="place-card-actions">
+                <button
+                  type="button"
+                  className={`visited-toggle ${place.visited ? 'visited-toggle-active' : ''}`}
+                  onClick={() => toggleVisited(place)}
+                  aria-pressed={place.visited}
+                  aria-label={place.visited ? `Mark ${place.name} as not visited` : `Mark ${place.name} as visited`}
+                >
+                  {place.visited ? '✓ Visited' : '○ Want to go'}
+                </button>
+
+                <div className="place-card-actions-right">
+                  <a
+                    href={place.maps_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="maps-link"
+                  >
+                    Maps ↗
+                  </a>
                   <button
                     type="button"
-                    className={`visited-toggle ${place.visited ? 'visited-toggle-active' : ''}`}
-                    onClick={() => toggleVisited(place)}
-                    aria-pressed={place.visited}
-                    aria-label={place.visited ? `Mark ${place.name} as not visited` : `Mark ${place.name} as visited`}
+                    className="place-remove"
+                    onClick={() => removePlace(place.id)}
+                    aria-label={`Remove ${place.name}`}
                   >
-                    {place.visited ? '✓ Visited' : '○ Want to go'}
+                    Remove
                   </button>
-                </div>
-                <a
-                  href={place.maps_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="maps-link"
-                >
-                  Maps ↗
-                </a>
-              </div>
-
-              <div className="ig-body">
-                <div className="ig-likes">Saved place</div>
-                <h2 className="ig-title">{place.name}</h2>
-                <p className="ig-caption">
-                  <span className="ig-caption-author">address</span>{' '}
-                  {place.address}
-                </p>
-                {place.note && (
-                  <p className="ig-caption">
-                    <span className="ig-caption-author">note</span>{' '}
-                    {place.note}
-                  </p>
-                )}
-                {place.description && <p className="ig-caption">{place.description}</p>}
-                {place.what_to_order && (
-                  <p className="ig-relevance">🍽️ What to order: {place.what_to_order}</p>
-                )}
-                {place.tags.length > 0 && (
-                  <div className="ig-tags">
-                    {place.tags.map((tag) => (
-                      <span key={tag} className="ig-tag">#{tag}</span>
-                    ))}
-                  </div>
-                )}
-                <div className="ig-meta-row">
-                  <span>Added {formatDate(place.date_added)}</span>
                 </div>
               </div>
             </article>
