@@ -8,10 +8,39 @@
     "note": "Found by my wife, need to try for brunch.",
     "description": "Greek family café from Rhodes, now in Prenzlauer Berg. Ingredients imported directly from Greece — feta, olive oil, honey, yoghurt. Known for bougatsa (custard pastry), Greek orange cake, and iced coffees from Blaue Bohne roastery. Leafy hidden gem with indoor and outdoor seating. No laptops allowed. Weekends get busy — go early.",
     "what_to_order": "Bougatsa or Melitzana, Greek orange cake + iced coffee",
-    "tags": ["greek", "café", "brunch", "berlin", "prenzlauer-berg"],
+    "tags": [
+      "greek",
+      "café",
+      "brunch",
+      "berlin",
+      "prenzlauer-berg"
+    ],
     "date_added": "2026-04-05",
     "visited": false,
     "photo_url": null,
     "google_place_id": "ChIJ1Tpg8sBPqEcRLSzio4QZH4s"
+  },
+  {
+    "id": "bake-and-take-berlin",
+    "name": "Bake and Take",
+    "address": "Proskauer Str. 29, 10247 Berlin",
+    "category": "bakery",
+    "maps_url": "https://maps.app.goo.gl/bLLhxe9cESTHk8ak9",
+    "note": "Recommended by my wife after our disastrous cake hunt. Need to check it out for pastries and cake.",
+    "description": "Small family bakery in Friedrichshain’s Samariterviertel, opened in 2024 and already a neighborhood favorite. Known for laminated pastries made by hand with French butter and Italian flour, plus excellent coffee to go.",
+    "what_to_order": "Classic croissant, cardamom bun, salted caramel croissant, or a cruffin",
+    "tags": [
+      "bakery",
+      "pastries",
+      "cake",
+      "coffee",
+      "berlin",
+      "friedrichshain",
+      "samariterviertel"
+    ],
+    "date_added": "2026-04-29",
+    "visited": false,
+    "photo_url": null,
+    "google_place_id": "ChIJWWZdqBBPqEcRgWuNbrcfLyo"
   }
 ]
