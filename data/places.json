@@ -1,5 +1,24 @@
 [
   {
+    "id": "restaurant-tsomi-berlin",
+    "name": "Restaurant Tsomi",
+    "address": "Kollwitzstraße 66, 10435 Berlin",
+    "category": "restaurant",
+    "maps_url": "https://maps.app.goo.gl/hgsYqip2wfBVVNYLA?g_st=ic",
+    "note": "Saved from Google Maps.",
+    "description": "Restaurant in Prenzlauer Berg, Berlin.",
+    "tags": [
+      "restaurant",
+      "berlin",
+      "prenzlauer-berg",
+      "maps"
+    ],
+    "date_added": "2026-05-08",
+    "visited": false,
+    "photo_url": null,
+    "google_place_id": null
+  },
+  {
     "id": "pala-berlin",
     "name": "Pala Berlin — Greek Café",
     "address": "Gaudystraße 1, 10437 Berlin",
