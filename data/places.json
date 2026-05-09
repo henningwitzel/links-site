@@ -1,22 +1,25 @@
 [
   {
     "id": "restaurant-tsomi-berlin",
-    "name": "Restaurant Tsomi",
+    "name": "Restaurant Tsomi — Georgian Kitchen",
     "address": "Kollwitzstraße 66, 10435 Berlin",
     "category": "restaurant",
     "maps_url": "https://maps.app.goo.gl/hgsYqip2wfBVVNYLA?g_st=ic",
-    "note": "Saved from Google Maps.",
-    "description": "Restaurant in Prenzlauer Berg, Berlin.",
+    "note": "Georgian restaurant in Kollwitzkiez. Good candidate for a shared dinner spot or dinner with guests.",
+    "description": "Modern Georgian restaurant in Prenzlauer Berg’s Kollwitzkiez that leans into warm hospitality and classic supra-style table sharing. The kitchen mixes traditional Georgian dishes with Persian, Ottoman, and Anatolian influences, and the menu explicitly calls out strong vegetarian and vegan options.",
     "tags": [
+      "georgian",
       "restaurant",
+      "dinner",
       "berlin",
       "prenzlauer-berg",
-      "maps"
+      "kollwitzkiez"
     ],
     "date_added": "2026-05-08",
     "visited": false,
     "photo_url": null,
-    "google_place_id": null
+    "google_place_id": null,
+    "what_to_order": "Tsomi appetizer platter to share, plus a few Georgian mains and wine"
   },
   {
     "id": "pala-berlin",
