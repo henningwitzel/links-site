@@ -1,5 +1,27 @@
 [
   {
+    "id": "rotisserie-weingruen-berlin",
+    "name": "Rotisserie Weingrün",
+    "address": "Gertraudenstraße 10-12, 10178 Berlin",
+    "category": "restaurant",
+    "maps_url": "https://share.google/Og4MB1IvZ4sdZnr8j",
+    "note": "Firuze wollte da mal mit mir hingehen. Good candidate for a nicer dinner in Mitte.",
+    "description": "Stylish Berlin-Mitte rotisserie restaurant built around an open flame grill. Known for rotisserie and grill dishes like landhuhn, flammlachs, Barbarie duck, entrecôte, and Duroc pork belly, with a more polished date-night or guest-dinner feel than a casual neighborhood spot.",
+    "what_to_order": "Landhuhn or flammlachs from the rotisserie, plus a couple of sides and wine",
+    "tags": [
+      "restaurant",
+      "berlin",
+      "mitte",
+      "date-night",
+      "rotisserie",
+      "grill"
+    ],
+    "date_added": "2026-05-09",
+    "visited": false,
+    "photo_url": null,
+    "google_place_id": null
+  },
+  {
     "id": "restaurant-tsomi-berlin",
     "name": "Restaurant Tsomi — Georgian Kitchen",
     "address": "Kollwitzstraße 66, 10435 Berlin",
