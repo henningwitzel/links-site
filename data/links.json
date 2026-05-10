@@ -1,5 +1,26 @@
 [
   {
+    "url": "https://claw-x.com/?lang=en",
+    "title": "ClawX - Open Source AI Research Assistant | 24/7 Autonomous Data Monitoring",
+    "type": "tool",
+    "author": "ClawX",
+    "summary": "An open source, local-first AI research assistant that runs on your computer, browses and monitors sources autonomously, and delivers structured research updates through messaging channels.",
+    "notes": "Positioned around 24/7 autonomous monitoring rather than one-shot chat. Core promise: keep tabs on sites, docs, issue queues, and other live sources, then push AI-powered summaries through WhatsApp, Telegram, Slack, and other channels.",
+    "relevance": "Very relevant to Henning's OpenClaw and agent-system work: strong reference point for local-first autonomous research UX, messaging-native delivery, ongoing monitoring workflows, and how to package agent capabilities as a product.",
+    "tags": [
+      "tool",
+      "ai",
+      "agents",
+      "research",
+      "monitoring",
+      "local-first",
+      "automation",
+      "messaging"
+    ],
+    "date_added": "2026-05-10",
+    "domain": "claw-x.com"
+  },
+  {
     "url": "https://x.com/bidah/status/2053071057737679138?s=46",
     "title": "Drop your screenshots and this Claude skill turns them into animated onboarding",
     "type": "article",
