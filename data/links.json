@@ -1,5 +1,25 @@
 [
   {
+    "url": "https://x.com/bidah/status/2053071057737679138?s=46",
+    "title": "Drop your screenshots and this Claude skill turns them into animated onboarding",
+    "type": "article",
+    "author": "@bidah",
+    "summary": "X post by ROFI sharing a longform X article arguing that the biggest lever for mobile app conversion is showing product functionality with onboarding videos before the paywall, using screenshots plus a Claude-powered workflow to generate animated onboarding.",
+    "notes": "The original X post is link-only and points to an X article card. Public metadata exposed the article title and preview text, but X blocked full body retrieval during ingest.",
+    "relevance": "Directly relevant to Henning's app onboarding, growth, and AI workflow interests — especially around using AI-assisted tooling to quickly turn existing product screenshots into clearer onboarding experiences that may improve conversion.",
+    "tags": [
+      "x",
+      "onboarding",
+      "mobile",
+      "conversion",
+      "claude",
+      "ai-workflows",
+      "growth"
+    ],
+    "date_added": "2026-05-10",
+    "domain": "x.com"
+  },
+  {
     "url": "https://tools.simonwillison.net/",
     "title": "tools.simonwillison.net",
     "type": "tool",
