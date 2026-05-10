@@ -4,17 +4,18 @@
     "title": "Drop your screenshots and this Claude skill turns them into animated onboarding",
     "type": "article",
     "author": "@bidah",
-    "summary": "X post by ROFI sharing a longform X article arguing that the biggest lever for mobile app conversion is showing product functionality with onboarding videos before the paywall, using screenshots plus a Claude-powered workflow to generate animated onboarding.",
-    "notes": "The original X post is link-only and points to an X article card. Public metadata exposed the article title and preview text, but X blocked full body retrieval during ingest.",
-    "relevance": "Directly relevant to Henning's app onboarding, growth, and AI workflow interests — especially around using AI-assisted tooling to quickly turn existing product screenshots into clearer onboarding experiences that may improve conversion.",
+    "summary": "ROFI argues that the highest-leverage improvement for mobile app conversion is showing clear onboarding videos before the paywall, because they build trust and help users understand the app's core loop before being asked to pay.",
+    "notes": "Fetched via X API article metadata and plain_text. Core points: pre-paywall onboarding videos outperform static screenshots because they reduce skepticism and clarify value; the best versions teach rather than merely show by using deliberate motion, highlighted tap targets, pauses, and didactic structure. The post ends by open-sourcing a Claude skill that turns ordered screenshots into animated onboarding videos.",
+    "relevance": "Strong fit for Henning's interests in mobile onboarding, conversion, product storytelling, and AI-assisted creation workflows. Especially useful as a framing for how to make product value legible before monetization friction, and for turning screenshots into more persuasive onboarding assets.",
     "tags": [
       "x",
-      "onboarding",
       "mobile",
+      "onboarding",
       "conversion",
+      "growth",
       "claude",
       "ai-workflows",
-      "growth"
+      "product-marketing"
     ],
     "date_added": "2026-05-10",
     "domain": "x.com"
