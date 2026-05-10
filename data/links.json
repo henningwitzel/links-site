@@ -1,5 +1,24 @@
 [
   {
+    "url": "https://tools.simonwillison.net/",
+    "title": "tools.simonwillison.net",
+    "type": "tool",
+    "author": "Simon Willison",
+    "summary": "A large collection of lightweight browser-based utilities by Simon Willison, covering image handling, OCR, Markdown and JSON transforms, time and data helpers, GitHub utilities, Bluesky tools, and small LLM playgrounds.",
+    "notes": "A living gallery of low-stakes, prompt-driven toolmaking. Especially notable for the colophon and linked commit/transcript history for each tool, which makes the collection useful both as a utility set and as a reference for practical LLM-assisted development patterns.",
+    "relevance": "Highly relevant to Henning's AI tooling and product workflow: it is both a grab bag of immediately useful utilities and a strong reference for shipping small, focused tools with transparent AI-assisted build process and clear product taste.",
+    "tags": [
+      "tool",
+      "llm",
+      "developer-tools",
+      "utilities",
+      "prompt-driven-development",
+      "simon-willison"
+    ],
+    "date_added": "2026-05-10",
+    "domain": "tools.simonwillison.net"
+  },
+  {
     "url": "https://x.com/oliverkenyon/status/2044446499388420292?s=46",
     "title": "The anatomy of a high converting landing page (works for anything you sell.)",
     "type": "article",
